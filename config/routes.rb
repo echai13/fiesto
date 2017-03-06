@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :events
+  resources :events, :users
   get 'users/new'
-  get 'event/new'
-
-  root 'application#hello'
+  get 'events/new'
+  root 'events#index'
 end
