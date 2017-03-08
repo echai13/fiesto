@@ -4,7 +4,5 @@ Rails.application.routes.draw do
   get 'events/new'
   root 'events#index'
   post '/signup',  to: 'users#create'
-  resources :users
-
 
 end
