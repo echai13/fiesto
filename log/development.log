@@ -3580,3 +3580,44 @@ Processing by UsersController#create as HTML
 Completed 200 OK in 83ms (Views: 18.6ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/signup" for 127.0.0.1 at 2017-03-08 01:20:18 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.3ms)
+  Rendered users/new.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 319ms (Views: 303.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/signup" for 127.0.0.1 at 2017-03-08 01:20:32 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bbUurunqCg3Gt8dF9OblN9p3fXjDkfAwEc0E0yiGdaO3H5bnLNwt5mnRH3AEXL09feNxSLXT6ShWqA5+k+Br9Q==", "user"=>{"username"=>"dasds", "email"=>"dasds@dsads", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "dasds@dsads"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (1.3ms)
+  Rendered users/new.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 106ms (Views: 29.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2017-03-08 01:23:21 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.5ms)
+  Rendered users/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 857ms (Views: 856.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/signup" for 127.0.0.1 at 2017-03-08 01:23:33 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IGPEL/gu9lAT3SivIq301gE+yE4SZKEXdHmTvJTtnOT6yXxmPRjRu7y78JrSF6zcpqrEfmQmuA8zHJkRL4uCsg==", "user"=>{"username"=>"ds", "email"=>"das@sdads", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "das@sdads"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (1.0ms)
+  Rendered users/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 88ms (Views: 27.2ms | ActiveRecord: 0.4ms)
+
+

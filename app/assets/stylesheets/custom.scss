@@ -1,7 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
 /* universal */
 
 body {
@@ -9,7 +8,7 @@ body {
 }
 
 section {
-  overflow: auto;
+  overflow:auto;
 }
 
 textarea {
@@ -51,7 +50,23 @@ p {
   line-height: 1.7em;
 }
 
-/* mixins, variables, etc. */
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* mixins, varaibles, etc. */
 
 $gray-medium-light: #eaeaea;
 
@@ -61,6 +76,8 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
+/* miscellaneous */
+
 .debug_dump {
   clear: both;
   float: left;
@@ -69,42 +86,13 @@ $gray-medium-light: #eaeaea;
   @include box_sizing;
 }
 
-/* forms */
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-  @include box_sizing;
-}
-
-input {
-  height: auto !important;
-}
-
-
-#error_explanation {
-  color: red;
-  ul {
-    color: red;
-    margin: 0 0 30px 0;
-  }
-}
-
-
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-    color: $state-danger-text;
-  }
-}
-
 /* sidebar */
 
 aside {
   section.user_info {
     margin-top: 20px;
   }
+
   section {
     padding: 10px 0;
     margin-top: 20px;
@@ -127,11 +115,70 @@ aside {
   }
 }
 
-.gravatar {
+.gravtar {
   float: left;
   margin-right: 10px;
 }
 
 .gravatar_edit {
   margin-top: 15px;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color:red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 15px;
 }
