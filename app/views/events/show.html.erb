@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Pictures:</strong>
+  <img src="/images/hogwarts.jpg" alt="Party House Image"/>
+</p>
+
+<p>
   <strong>Name:</strong>
   <%= @event.name %>
 </p>
@@ -19,6 +24,8 @@
   <strong>Location:</strong>
   <%= @event.location %>
 </p>
+
+
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

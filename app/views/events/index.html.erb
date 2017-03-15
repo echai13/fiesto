@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Party Name</th>
       <th>Date</th>
       <th>Time</th>
       <th>Location</th>
@@ -16,15 +16,15 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.name %></td>
+        <td ><%= event.name %></td>
         <td><%= event.date %></td>
         <td><%= event.time %></td>
         <td><%= event.location %></td>
+        <td><img src="/images/hogwarts.jpg" alt="Party House Image"/></td>
         <td><%= link_to 'Show', event %></td>
         <% if logged_in? %>
           <td><%= link_to 'Edit', edit_event_path(event) %></td>
           <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <%= link_to 'New Event', new_event_path %>
         <% end %>
       </tr>
     <% end %>
@@ -32,3 +32,6 @@
 </table>
 
 <br>
+<% if logged_in? %>
+  <%= link_to 'New Event', new_event_path %>
+<% end %>
