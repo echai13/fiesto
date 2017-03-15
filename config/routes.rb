@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :events, :users
-  root 'static_pages#home'
+  root 'events#index'
 
   get '/home', to: 'static_pages#home'
   get '/about', to: 'static_pages#about'
