@@ -5,6 +5,15 @@
 
 body {
   padding-top: 60px;
+  margin-bottom: 100px;
+}
+
+.background-image {
+  background: image-url('party.jpg') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
 }
 
 section {
@@ -54,7 +63,7 @@ p {
 /* navbar */
 
 .navbar{
-  background-color: aqua;
+  background-color: #ff7f50;
 }
 
 #logo {
@@ -76,10 +85,15 @@ p {
 /* footer */
 
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
+  position: fixed;
+  height: auto;
+  width: 100%;
+  left:0px;
+  bottom: 10px;
   border-top: 1px solid #eaeaea;
   color: #777;
+  background-color: #ff7f50;
+
 }
 
 footer a {
@@ -206,4 +220,38 @@ img {
 .square {
     height: 75px;
     width: 75px;
+}
+
+.own-event {
+  float: left;
+  display: inline-block;
+  margin-top: -50px;
+  height: 380px;
+  width: 360px;
+  text-align: center;
+}
+
+.own-event img {
+  position: relative;
+  max-height: 350px;
+  max-width: 300px;
+  height: auto;
+  width: auto;
+  margin-top: 10px;
+}
+
+.all-events {
+  text-align: center;
+  position: relative;
+}
+
+.color-box {
+  background: rgba(255, 255, 255, 0.5);
+  height: 200px;
+  width: 350px;
+}
+
+.new-event {
+  position: relative;
+  margin-bottom: 80px;
 }

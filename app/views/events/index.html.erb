@@ -1,8 +1,14 @@
+<body class="background-image">
 <p id="notice"><%= notice %></p>
 
-<h1>Events</h1>
+<h1>Parties</h1>
+<p class="new-event">
+<% if logged_in? %>
+  <%= link_to 'New Event', new_event_path %>
+<% end %>
+</p>
 
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>Party Name</th>
@@ -11,27 +17,27 @@
       <th>Location</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+  </thead> -->
 
-  <tbody>
+  <!-- <tbody> -->
+  <div class="col-md-12 all-events">
     <% @events.each do |event| %>
-      <tr>
-        <td ><%= event.name %></td>
-        <td><%= event.date %></td>
-        <td><%= event.time %></td>
-        <td><%= event.location %></td>
-        <td><img src="/images/hogwarts.jpg" alt="Party House Image"/></td>
-        <td><%= link_to 'Show', event %></td>
-        <% if logged_in? %>
-          <td><%= link_to 'Edit', edit_event_path(event) %></td>
-          <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="own-event">
+        <div class="color-box">
+        <p><img src="/images/hogwarts.jpg" alt="Party House Image" />
+        <p><%= link_to "#{event.name}", event %>
+        <!-- <p><%= event.date %>
+        <p><%= event.time %>
+        <p><%= event.location %> -->
+        </div>
 
-<br>
-<% if logged_in? %>
-  <%= link_to 'New Event', new_event_path %>
-<% end %>
+        <!-- <td><%= link_to 'Show', event %></td>
+        <% if logged_in? %>
+          <%= link_to 'Edit', edit_event_path(event) %>
+          <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %> -->
+    </div>
+    <% end %>
+  </div>
+  <!-- </tbody>
+</table> -->
