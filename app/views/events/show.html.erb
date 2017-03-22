@@ -1,31 +1,30 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
-  <strong>Pictures:</strong>
-  <img src="/images/hogwarts.jpg" alt="Party House Image"/>
+    <strong>Pictures:</strong>
+    <%= image_tag @event.avatar.url(:large) %>
 </p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @event.name %>
+    <strong>Name:</strong>
+    <%= @event.name %>
 </p>
 
 <p>
-  <strong>Date:</strong>
-  <%= @event.date %>
+    <strong>Date:</strong>
+    <%= @event.date %>
 </p>
 
 <p>
-  <strong>Time:</strong>
-  <%= @event.time %>
+    <strong>Time:</strong>
+    <%= @event.time %>
 </p>
 
 <p>
-  <strong>Location:</strong>
-  <%= @event.location %>
+    <strong>Location:</strong>
+    <%= @event.location %>
 </p>
 
-
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Edit', edit_event_path(@event) %>
+|
 <%= link_to 'Back', events_path %>

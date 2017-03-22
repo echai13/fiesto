@@ -1,5 +1,4 @@
 <body class="background-image">
-<p id="notice"><%= notice %></p>
 
 <h1>Parties</h1>
 <p class="new-event">
@@ -24,18 +23,18 @@
     <% @events.each do |event| %>
       <div class="own-event">
         <div class="color-box">
-        <p><img src="/images/hogwarts.jpg" alt="Party House Image" />
-        <p><%= link_to "#{event.name}", event %>
+        <p><%= image_tag event.avatar.url(:thumb) %></p>
+        <p><%= link_to "#{event.name}", event %></p>
         <!-- <p><%= event.date %>
         <p><%= event.time %>
         <p><%= event.location %> -->
         </div>
 
-        <!-- <td><%= link_to 'Show', event %></td>
+        <!-- <td><%= link_to 'Show', event %></td>-->
         <% if logged_in? %>
           <%= link_to 'Edit', edit_event_path(event) %>
           <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %> -->
+        <% end %>
     </div>
     <% end %>
   </div>
