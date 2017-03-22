@@ -1,4 +1,9 @@
 
+<p>
+    <strong>Host:</strong>
+    <% @host = User.find_by id: @event.user_id %>
+    <%= @host.username %>
+</p>
 
 <p>
     <strong>Pictures:</strong>
@@ -25,7 +30,7 @@
     <%= @event.location %>
 </p>
 
-<% if logged_in? %>
+<% if logged_in? && @event.user_id == current_user.id%>
   <%= link_to 'Edit', edit_event_path(@event) %>
   <%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

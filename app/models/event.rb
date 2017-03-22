@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   has_many :parties
   has_many :users, through: :parties
+  belongs_to :user
 
   validates :name, presence: true, length: { maximum: 50 }
   has_attached_file :avatar,

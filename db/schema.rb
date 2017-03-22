@@ -17,12 +17,14 @@ ActiveRecord::Schema.define(version: 20170322184652) do
     t.date     "date"
     t.time     "time"
     t.string   "location"
+    t.integer  "user_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "parties", force: :cascade do |t|
