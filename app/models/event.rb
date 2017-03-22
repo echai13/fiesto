@@ -1,10 +1,11 @@
 class Event < ApplicationRecord
 
+  validates :name, presence: true, length: { maximum: 50 }
   has_attached_file :avatar,
   :path => ":rails_root/public/images/:attachment/:id/:basename_:style.:extension",
   :url => "/images/:attachment/:id/:basename_:style.:extension",
   :styles => {
-    :thumb    => ['400x400#',  :jpg, :quality => 70],
+    :thumb    => ['200x200#',  :jpg, :quality => 70],
     :preview  => ['480x480#',  :jpg, :quality => 70],
     :large    => ['600>',      :jpg, :quality => 70],
     :retina   => ['1200>',     :jpg, :quality => 30]
@@ -20,5 +21,6 @@ class Event < ApplicationRecord
     :presence => true,
     :size => { :in => 0..10.megabytes },
     :content_type => { :content_type => /^image\/(jpeg|png|gif|tiff)$/ }
+
 
 end
