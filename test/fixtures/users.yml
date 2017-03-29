@@ -13,3 +13,8 @@ two:
   bio: MyString
   first_name: MyString
   last_name: MyString
+
+kelvin:
+  username: kelvin
+  email: kelvin@brandeis.edu
+  password_digest: <%= User.digest('password') %>
