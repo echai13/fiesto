@@ -18,3 +18,9 @@ kelvin:
   username: kelvin
   email: kelvin@brandeis.edu
   password_digest: <%= User.digest('password') %>
+
+
+erica:
+  username: erica
+  email: erica@brandeis.edu
+  password_digest: <%= User.digest('password') %>
