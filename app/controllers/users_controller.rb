@@ -3,10 +3,17 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
 
   def new
-    @user = User.new
+    #prevents user from accessing signup when already logged in
+    begin
+      @user = User.find(session[:user_id])
+      redirect_to @user
+    rescue ActiveRecord::RecordNotFound
+      @user = User.new
+    end
   end
 
   def show
+    #prevents users from using URLs to access other user's information
     begin
      @user = User.find(params[:id])
      if @user.id != session[:user_id]
