@@ -17,10 +17,10 @@ class UsersController < ApplicationController
     begin
      @user = User.find(params[:id])
      if @user.id != session[:user_id]
-       render 'error'
+       redirect_to error_url
      end
     rescue ActiveRecord::RecordNotFound
-      render 'error'
+      redirect_to error_url
     end
   end
 

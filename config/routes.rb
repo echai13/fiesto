@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/contact', to: 'static_pages#contact'
   get '/signup', to: 'users#new'
   get '/settings', to: 'users#edit'
+  get '/error', to: 'users#error'
   get 'events/new'
   post '/signup',  to: 'users#create'
   get    '/login',   to: 'sessions#new'
