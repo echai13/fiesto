@@ -8,4 +8,5 @@
 1. Signup for Parties
 2. Chatrooms
 3. Credit Card Authorizations
+4. Setup Codeship (Finished)
 
