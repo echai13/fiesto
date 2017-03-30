@@ -1,4 +1,4 @@
-Team name:​ Fiesto
+﻿Team name:​ Fiesto, Jorden is kinda awesome
 
 Meeting times:​ Sunday from 9-11pm
 
@@ -28,3 +28,4 @@ phone or via check-ins with the host.
 
 ● After the party, there is an after party social media platform for the users to post about the
 event, share photos/videos, and connect with people met at the party.
+
