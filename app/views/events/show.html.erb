@@ -35,7 +35,7 @@
     <ol>
     <% @party.each do |party| %>
       <% if party.event_id == @event.id %>
-        <li><%= party.user_id %></li>
+        <li><%= User.name_by_id(party.user_id).first.username %></li>
       <% end %>
     <% end %>
     </ol>

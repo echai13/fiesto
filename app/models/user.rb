@@ -41,7 +41,7 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
-  # def self.name(search)
-  #   where("id == ?", "%#{search}%")
-  # end
+  def self.name_by_id(search)
+    where("id == ?", "#{search}").select(:username)
+  end
 end
