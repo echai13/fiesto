@@ -10,6 +10,23 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @party = Party.all
+  end
+
+  #Party Signups
+  def join
+    if params[:id]
+      @party = Party.existing(current_user.id, params[:id]).first
+        if @party == nil
+          @party = Party.new(user_id: current_user.id, event_id: params[:id])
+          @party.save
+          flash[:success] = "Sucessfully Joined!"
+          redirect_to current_user
+        else
+          flash[:danger] = "You already signed up for this."
+          redirect_to current_user
+        end
+    end
   end
 
   # GET /events/new
