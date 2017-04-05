@@ -26,7 +26,7 @@ class Event < ApplicationRecord
     :content_type => { :content_type => /^image\/(jpeg|png|gif|tiff)$/ }
 
   def self.name_by_id(search)
-    where("id == ?", "#{search}").select(:name)
+    where("id = ?", "#{search}").select(:name)
   end
 
 end
