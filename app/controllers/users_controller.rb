@@ -13,15 +13,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    #prevents users from using URLs to access other user's information
-    begin
      @user = User.find(params[:id])
-     if @user.id != session[:user_id]
-       redirect_to error_url
-     end
-    rescue ActiveRecord::RecordNotFound
-      redirect_to error_url
-    end
   end
 
   def edit
