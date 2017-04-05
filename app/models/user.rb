@@ -43,6 +43,6 @@ class User < ApplicationRecord
 
   #finds name based on id
   def self.name_by_id(search)
-    where("id == ?", "#{search}").select(:username)
+    where("id = ?", "#{search}").select(:username)
   end
 end
