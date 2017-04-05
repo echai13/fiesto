@@ -11,18 +11,17 @@
 </div>
 
 <div class = "row">
-  <h2>
+   <div id = "show_party">
     Current Registered Parties:
-
-    <ul>
+    <table id = "current_table">
         <% Party.all.each do |party| %>
           <% if party.user_id == current_user.id %>
-          <li><%= link_to Event.name_by_id(party.event_id).first.name, Event.find(party.event_id) %>
-            <%= button_to 'Delete', { action: "drop", id: party.event_id }, data: { confirm: 'Are you sure?' }, :class => 'event-button'%>
-          </li>
+          <tr>
+            <td><%= link_to Event.name_by_id(party.event_id).first.name, Event.find(party.event_id) %></td>
+            <td><%= link_to 'Delete', { action: "drop", id: party.event_id }, data: { confirm: 'Are you sure?' }%></td>
+          </tr>
           <% end %>
         <% end %>
-    </ul>
-
-</h2>
+    </table>
+</div>
 </div>

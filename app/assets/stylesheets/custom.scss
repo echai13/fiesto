@@ -1,11 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
 /* universal */
-
-*{
-  font-family: 'Spirax', cursive;
-
+* {
+    font-family: 'Spirax', cursive;
 }
 
 .event-button {
@@ -24,204 +21,199 @@
 }
 
 body {
-  padding-top: 60px;
-  margin-bottom: 100px;
+    padding-top: 60px;
+    margin-bottom: 100px;
 }
 
 .background-image {
-  background: image-url('party.jpg') !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-  background-attachment: fixed !important;
-  background-size: cover !important;
+    background: image-url('party.jpg') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    background-size: cover !important;
 }
 
 section {
-  overflow: auto;
+    overflow: auto;
 }
 
 textarea {
-  resize: vertical;
+    resize: vertical;
 }
 
 .center {
-  text-align: center;
+    text-align: center;
 }
 
 .center h1 {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
-
 /* typography */
-
-h1, h2, h3, h4, h5, h6 {
-  line-height: 5;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 5;
 }
 
 h1 {
-  font-size: 4em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
+    font-size: 4em;
+    letter-spacing: -2px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: #777;
+    font-size: 1.2em;
+    letter-spacing: -1px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: normal;
+    color: #777;
 }
 
 p {
-  font-size: 1.1em;
-  line-height: 1.7em;
+    font-size: 1.1em;
+    line-height: 1.7em;
 }
-
 /* header */
 /* navbar */
-
-.navbar{
-  background-color: #ff7f50;
+.navbar {
+    background-color: #ff7f50;
 }
 
 #logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
+    float: left;
+    margin-right: 10px;
+    font-size: 1.7em;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    padding-top: 9px;
+    font-weight: bold;
 }
 
 #logo:hover {
-  color: yellow;
-  text-decoration: none;
+    color: yellow;
+    text-decoration: none;
 }
-
 /* footer */
-
 footer {
-  position: fixed;
-  height: auto;
-  width: 100%;
-  left:0px;
-  bottom: 10px;
-  border-top: 1px solid #eaeaea;
-  color: #777;
-  background-color: #ff7f50;
-
+    position: fixed;
+    height: auto;
+    width: 100%;
+    left: 0;
+    bottom: 10px;
+    border-top: 1px solid #eaeaea;
+    color: #777;
+    background-color: #ff7f50;
 }
 
 footer a {
-  color: #555;
+    color: #555;
 }
 
 footer a:hover {
-  color: #222;
+    color: #222;
 }
 
 footer small {
-  float: left;
+    float: left;
 }
 
 footer ul {
-  float: right;
-  list-style: none;
+    float: right;
+    list-style: none;
 }
 
 footer ul li {
-  float: left;
-  margin-left: 15px;
+    float: left;
+    margin-left: 15px;
 }
-
 /* sidebar */
-
 aside {
-  section.user_info {
-    margin-top: 20px;
-  }
-  section {
-    padding: 10px 0;
-    margin-top: 20px;
-    &:first-child {
-      border: 0;
-      padding-top: 0;
+    section.user_info {
+        margin-top: 20px;
     }
-    span {
-      display: block;
-      margin-bottom: 3px;
-      line-height: 1;
+
+    section {
+        padding: 10px 0;
+        margin-top: 20px;
+
+        &:first-child {
+            border: 0;
+            padding-top: 0;
+        }
+
+        span {
+            display: block;
+            margin-bottom: 3px;
+            line-height: 1;
+        }
+
+        h1 {
+            font-size: 1.4em;
+            text-align: left;
+            letter-spacing: -1px;
+            margin-bottom: 3px;
+            margin-top: 0;
+        }
     }
-    h1 {
-      font-size: 1.4em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin-bottom: 3px;
-      margin-top: 0px;
-    }
-  }
 }
 
 .gravatar {
-  float: left;
-  margin-right: 10px;
+    float: left;
+    margin-right: 10px;
 }
 
 .gravatar_edit {
-  margin-top: 15px;
+    margin-top: 15px;
 }
-
 /* forms */
-
 $gray-medium-light: #eaeaea;
-
 @mixin box_sizing {
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing:         border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-  @include box_sizing;
+.uneditable-input,
+input,
+select,
+textarea {
+    border: 1px solid #bbb;
+    width: 100%;
+    margin-bottom: 15px;
+    @include box_sizing;
 }
 
 input {
-  height: auto !important;
+    height: auto !important;
 }
 
-
 #error_explanation {
-  color: red;
-  ul {
     color: red;
-    margin: 0 0 30px 0;
-  }
+
+    ul {
+        color: red;
+        margin: 0 0 30px;
+    }
 }
 
 .field_with_errors {
-  @extend .has-error;
-  .form-control {
-    color: $state-danger-text;
-  }
-}
+    @extend .has-error;
 
+    .form-control {
+        color: $state-danger-text;
+    }
+}
 /* table */
-
-td
-{
-    padding:15px 15px 15px 15px;
+td {
+    padding: 15px;
 }
-
 /* images */
-
 img {
     max-width: 100%;
     max-height: 100%;
@@ -243,35 +235,47 @@ img {
 }
 
 .own-event {
-  float: left;
-  display: inline-block;
-  margin-top: -50px;
-  height: 380px;
-  width: 360px;
-  text-align: center;
+    float: left;
+    display: inline-block;
+    margin-top: -50px;
+    height: 380px;
+    width: 360px;
+    text-align: center;
 }
 
 .own-event img {
-  position: relative;
-  max-height: 350px;
-  max-width: 300px;
-  height: auto;
-  width: auto;
-  margin-top: 10px;
+    position: relative;
+    max-height: 350px;
+    max-width: 300px;
+    height: auto;
+    width: auto;
+    margin-top: 10px;
 }
 
 .all-events {
-  text-align: center;
-  position: relative;
+    text-align: center;
+    position: relative;
 }
 
 .color-box {
-  background: rgba(255, 255, 255, 0.5);
-  height: 280px;
-  width: 350px;
+    background: rgba(255, 255, 255, 0.5);
+    height: 280px;
+    width: 350px;
 }
 
 .new-event {
-  position: relative;
-  margin-bottom: 80px;
+    position: relative;
+    margin-bottom: 80px;
+}
+/* show_party css in user show */
+#show_party {
+    text-align: center;
+    margin: auto;
+    width: 60%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+
+#current_table{
+    margin: auto;
 }
