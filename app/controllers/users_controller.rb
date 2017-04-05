@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :drop]
   before_action :correct_user,   only: [:edit, :update]
+  before_action :admin_user,     only: :destroy
 
   def new
     #prevents user from accessing signup when already logged in
@@ -9,6 +10,15 @@ class UsersController < ApplicationController
       redirect_to @user
     rescue ActiveRecord::RecordNotFound
       @user = User.new
+    end
+  end
+
+  def index
+    #admins only page
+    if User.find(session[:user_id]).admin?
+      @users = User.paginate(page: params[:page])
+    else
+      redirect_to root_path
     end
   end
 
@@ -54,6 +64,18 @@ class UsersController < ApplicationController
    end
  end
 
+ def destroy
+   Party.user_deletion(params[:id]).each do |temp|
+     temp.destroy
+   end
+   Event.user_deletion(params[:id]).each do |temp|
+     temp.destroy
+   end
+   User.find(params[:id]).destroy
+   flash[:success] = "User deleted"
+   redirect_to users_url
+ end
+
  private
 
    def user_params
@@ -73,6 +95,11 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
+    end
+
+    # Confirms an admin user.
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 
 end

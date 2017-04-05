@@ -28,4 +28,8 @@ class Event < ApplicationRecord
     where("id = ?", "#{search}").select(:name)
   end
 
+  def self.user_deletion(u_id)
+    where("user_id = ?" , "#{u_id}")
+  end
+
 end

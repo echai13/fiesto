@@ -10,5 +10,9 @@ class Party < ApplicationRecord
     where("event_id = ?" , "#{e_id}")
   end
 
+  def self.user_deletion(u_id)
+    where("user_id = ?" , "#{u_id}")
+  end
+
 
 end
