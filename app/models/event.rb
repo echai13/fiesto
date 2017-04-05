@@ -4,10 +4,9 @@ class Event < ApplicationRecord
   belongs_to :user
 
   validates :name, presence: true, length: { maximum: 50 }
-  has_attached_file :avatar,
-  :path => ":rails_root/public/images/:attachment/:id/:basename_:style.:extension",
-  :url => "/images/:attachment/:id/:basename_:style.:extension",
-  :styles => {
+
+  # This method associates the attribute ":avatar" with a file attachment
+  has_attached_file :avatar, :styles => {
     :thumb    => ['200x200#',  :jpg, :quality => 70],
     :preview  => ['480x480#',  :jpg, :quality => 70],
     :large    => ['600>',      :jpg, :quality => 70],
@@ -18,12 +17,12 @@ class Event < ApplicationRecord
     :preview  => '-set colorspace sRGB -strip',
     :large    => '-set colorspace sRGB -strip',
     :retina   => '-set colorspace sRGB -strip -sharpen 0x0.5'
-  }
+  },
+  :url => "http://fiesto-app.s3.amazonaws.com/images/:attachment/:id/:basename_:style.:extension"
 
-  validates_attachment :avatar,
-    :presence => true,
-    :size => { :in => 0..10.megabytes },
-    :content_type => { :content_type => /^image\/(jpeg|png|gif|tiff)$/ }
+  # Validate the attached image is image/jpg, image/png, etc
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
 
   def self.name_by_id(search)
     where("id = ?", "#{search}").select(:name)
