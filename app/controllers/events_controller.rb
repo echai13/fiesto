@@ -73,7 +73,12 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
+    #destroys relationships
+    Party.deletion(@event.id).each do |temp|
+      temp.destroy
+    end
     @event.destroy
+
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }

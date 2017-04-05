@@ -6,5 +6,9 @@ class Party < ApplicationRecord
     where("user_id == ? AND event_id == ?", "#{u_id}", "#{e_id}")
   end
 
+  def self.deletion(e_id)
+    where("event_id == ?" , "#{e_id}")
+  end
+
 
 end

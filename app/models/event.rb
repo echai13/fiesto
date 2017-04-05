@@ -25,5 +25,8 @@ class Event < ApplicationRecord
     :size => { :in => 0..10.megabytes },
     :content_type => { :content_type => /^image\/(jpeg|png|gif|tiff)$/ }
 
+  def self.name_by_id(search)
+    where("id == ?", "#{search}").select(:name)
+  end
 
 end

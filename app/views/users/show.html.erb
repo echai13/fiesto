@@ -9,3 +9,18 @@
         </section>
     </aside>
 </div>
+
+<div class = "row">
+  <h2>
+    Current Registered Parties:
+
+    <ul>
+        <% Party.all.each do |party| %>
+          <% if party.user_id == current_user.id %>
+            <li><%= link_to Event.name_by_id(party.event_id).first.name, Event.find(party.event_id) %></li>
+          <% end %>
+        <% end %>
+    </ul>
+
+</h2>
+</div>
