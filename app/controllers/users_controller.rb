@@ -33,6 +33,15 @@ class UsersController < ApplicationController
     end
   end
 
+  #drop parties
+  def drop
+    if params[:id]
+      Party.existing(current_user.id,params[:id]).first.destroy
+      flash[:success] = "Sucessfully Dropped!"
+      redirect_to current_user
+    end
+  end
+
   #signup page
   def create
    @user = User.new(user_params)

@@ -17,7 +17,9 @@
     <ul>
         <% Party.all.each do |party| %>
           <% if party.user_id == current_user.id %>
-            <li><%= link_to Event.name_by_id(party.event_id).first.name, Event.find(party.event_id) %></li>
+          <li><%= link_to Event.name_by_id(party.event_id).first.name, Event.find(party.event_id) %>
+            <%= button_to 'Delete', { action: "drop", id: party.event_id }, data: { confirm: 'Are you sure?' }, :class => 'event-button'%>
+          </li>
           <% end %>
         <% end %>
     </ul>

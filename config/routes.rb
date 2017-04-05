@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :events, :users
   root 'events#index'
 
+  post '/drop', to: 'users#drop'
   post '/join', to: 'events#join'
   get '/home', to: 'static_pages#home'
   get '/about', to: 'static_pages#about'
