@@ -46,7 +46,7 @@
 </p>
 </div>
 
-<div class = "col-sm-3"
+<div class = "col-sm-3">
 <% if logged_in? && @event.user_id == current_user.id%>
 <%= button_to 'Edit', edit_event_path(@event), :method => :get, :class => 'event-button'%>
 <%= button_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'event-button'%>
@@ -54,4 +54,5 @@
 <% if logged_in? %>
 <%= button_to "Join",{ action: "join", id: @event.id}, {class: 'event-button'}%>
 <% end %>
+<%= button_to 'Back', "/", :class => 'event-button', :method => :get %>
 </div>
