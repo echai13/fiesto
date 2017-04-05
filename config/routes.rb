@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'events#index'
 
   post '/drop', to: 'users#drop'
+  get '/drop', to: 'user#drop'
   post '/join', to: 'events#join'
   get '/home', to: 'static_pages#home'
   get '/about', to: 'static_pages#about'
