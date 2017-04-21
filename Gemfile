@@ -14,7 +14,8 @@ gem 'coffee-rails', '4.2.1'
 gem 'jquery-rails', '4.1.1'
 gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.4.1'
-gem 'spreedly'
+gem 'stripe'
+gem 'stripe_event'
 
 group :development, :test do
   gem 'sqlite3', '1.3.12'
@@ -33,6 +34,7 @@ group :test do
   gem 'minitest-reporters',       '1.1.9'
   gem 'guard',                    '2.13.0'
   gem 'guard-minitest',           '2.4.4'
+  gem 'stripe-ruby-mock'
 end
 
 group :production do

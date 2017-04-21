@@ -1,0 +1,19 @@
+<%= form_tag charges_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+      <span>Amount: <%= $amount/100 %></span>
+    </label>
+  </article>
+
+<!---sends a token to create in charges controller --->
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="pk_test_BD3Ge0JJQJJTajV4XBxiIOJD"
+          data-description="Event fee payment"
+          data-amount="<%= $amount %>"
+          data-locale="auto"></script>
+<% end %>

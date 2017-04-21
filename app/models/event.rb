@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   has_many :parties
   has_many :users, through: :parties
+  has_many :charges
   belongs_to :user
 
   validates :name, presence: true, length: { maximum: 50 }
@@ -25,5 +26,8 @@ class Event < ApplicationRecord
     :size => { :in => 0..10.megabytes },
     :content_type => { :content_type => /^image\/(jpeg|png|gif|tiff)$/ }
 
-
+  validates :price, presence: true, numericality: { greater_than: 0 }
+  def price_in_cents
+    (price * 100).to_i
+  end
 end

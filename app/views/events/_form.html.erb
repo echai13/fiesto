@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :event_host => current_user.id %>
+
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -32,9 +34,18 @@
   </div>
 
   <div class="field">
+    <%= f.label :price %>
+    <%= f.number_field :price, :step => 0.01 %>
+  </div>
+
+  <div class="field">
     <%= f.label :picture %><br>
     <%= f.file_field :avatar %>
   </div>
+
+  <% if !current_user.account_id? %>
+    <%= render 'bank_account', f: f %>
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>

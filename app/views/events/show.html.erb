@@ -31,6 +31,12 @@
     <%= @event.location %>
 </p>
 
+<p>
+  <strong>Price:</strong>
+  <%= number_to_currency(@event.price) %>
+</p>
+
+  <%= link_to 'RSVP', charges_path(:event_id => @event.id, :event_price => @event.price.to_f, :event_host => @event.user_id) %>
 <% if logged_in? && @event.user_id == current_user.id%>
   <%= link_to 'Edit', edit_event_path(@event) %>
   <%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' } %>

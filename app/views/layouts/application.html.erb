@@ -4,8 +4,10 @@
     <title>FIESTO</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "http://js.stripe.com/v2/", 'application', 'data-turbolinks-track': 'reload' %>
+    <%= csrf_meta_tags %>
+    <%= tag :meta, :name => "stripe-key", :content => "pk_test_BD3Ge0JJQJJTajV4XBxiIOJD" %>
     <%= render 'layouts/shim' %>
   </head>
 
