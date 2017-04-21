@@ -44,8 +44,8 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
-  # def assign_customer_id
-  #   customer = Stripe::Customer.create(email: email)
-  #   update_attribute(:customer_id, customer.id)
-  # end
+  #finds name based on id
+  def self.name_by_id(search)
+    where("id = ?", "#{search}").select(:username)
+  end
 end

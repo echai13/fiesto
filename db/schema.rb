@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20170421184458) do
 
   create_table "charges", force: :cascade do |t|
@@ -52,12 +53,13 @@ ActiveRecord::Schema.define(version: 20170421184458) do
     t.string   "bio"
     t.string   "first_name"
     t.string   "last_name"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "password_digest"
     t.string   "remember_digest"
     t.string   "customer_id"
     t.string   "account_id"
+    t.boolean  "admin",           default: false
   end
 
 end
