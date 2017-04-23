@@ -28,7 +28,14 @@
 
 <p>
     <strong>Location:</strong>
+    <div id="address">
     <%= @event.location %>
+    </div>
+</p>
+<p>
+    <strong>Map:</strong>
+    <div id="map">
+    </div>
 </p>
 <p>
     <strong>Guests:</strong>
@@ -56,3 +63,28 @@
 <% end %>
 <%= button_to 'Back', "/", :class => 'event-button', :method => :get %>
 </div>
+
+<script>
+   function initMap() {
+     var xhr = new XMLHttpRequest();
+     var address = document.getElementById('address').textContent;
+     var source = "https://maps.googleapis.com/maps/api/geocode/json?address=REPLACEMENT&key=AIzaSyB8Y2tnZHjBCcyXWJNpqeVqXgeJLLcfk5c"
+     source = source.replace("REPLACEMENT",address)
+     xhr.open("GET", source, false);
+     xhr.send();
+     var response = JSON.parse(xhr.response)
+     console.log(source)
+     var display = response.results[0].geometry.location;
+     var map = new google.maps.Map(document.getElementById('map'), {
+       zoom: 15,
+       center: display
+     });
+     var marker = new google.maps.Marker({
+       position: display,
+       map: map
+     });
+   }
+</script>
+<script async defer
+ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8Y2tnZHjBCcyXWJNpqeVqXgeJLLcfk5c&callback=initMap">
+</script>
