@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= f.hidden_field :event_host => current_user.id %>
+
 
   <div class="field">
     <%= f.text_field :name,label: "Name"%>
@@ -30,17 +30,11 @@
   </div>
 
   <div class="field">
-<<<<<<< HEAD
-    <%= f.label :price %>
     <%= f.number_field :price, :step => 0.01 %>
   </div>
 
   <div class="field">
-    <%= f.label :picture %><br>
     <%= f.file_field :avatar %>
-=======
-    <%= f.file_field :avatar, label: "Event Picture"%>
->>>>>>> a0ac38b1c30c7287f5ce673517fb7f5f10cb0c83
   </div>
 
   <% if !current_user.account_id? %>
