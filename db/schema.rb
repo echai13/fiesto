@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170421184458) do
-
-  create_table "charges", force: :cascade do |t|
-    t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "event_id"
-  end
+ActiveRecord::Schema.define(version: 20170405034713) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -25,15 +18,12 @@ ActiveRecord::Schema.define(version: 20170421184458) do
     t.time     "time"
     t.string   "location"
     t.integer  "user_id"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.decimal  "price",               precision: 10, scale: 2
-    t.string   "routing"
-    t.string   "account"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -56,9 +46,11 @@ ActiveRecord::Schema.define(version: 20170421184458) do
     t.datetime "updated_at",                      null: false
     t.string   "password_digest"
     t.string   "remember_digest"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "cardnumber"
+    t.date     "expdate"
     t.boolean  "admin",           default: false
-    t.string   "customer_id"
-    t.string   "account_id"
   end
 
 end

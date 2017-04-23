@@ -31,17 +31,11 @@
     <%= @event.location %>
 </p>
 <p>
-    <strong>Map:</strong>
-    <div id="map">
-    </div>
-</p>
-
-<p>
     <strong>Guests:</strong>
     <ol>
         <% @party.each do |party| %>
         <% if party.event_id == @event.id %>
-        <% if (logged_in? && @event.user_id == current_user.id)%>
+        <% if logged_in? && @event.user_id == current_user.id%>
         <li><%= link_to User.name_by_id(party.user_id).first.username, User.find(party.user_id) %></li>
         <% else %>
         <li><%= User.name_by_id(party.user_id).first.username %></li>
@@ -52,14 +46,8 @@
 </p>
 </div>
 
-<p>
-  <strong>Price:</strong>
-  <%= number_to_currency(@event.price) %>
-</p>
-
-  <%= link_to 'RSVP', charges_path(:event_id => @event.id, :event_price => @event.price.to_f, :event_host => @event.user_id) %>
 <div class = "col-sm-3">
-<% if (logged_in? && @event.user_id == current_user.id)%>
+<% if logged_in? && @event.user_id == current_user.id%>
 <%= button_to 'Edit', edit_event_path(@event), :method => :get, :class => 'event-button'%>
 <%= button_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'event-button'%>
 <% end %>
@@ -68,20 +56,3 @@
 <% end %>
 <%= button_to 'Back', "/", :class => 'event-button', :method => :get %>
 </div>
-
-<script>
-  function initMap() {
-    var uluru = {lat: -25.363, lng: 131.044};
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 4,
-      center: uluru
-    });
-    var marker = new google.maps.Marker({
-      position: uluru,
-      map: map
-    });
-  }
-</script>
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8Y2tnZHjBCcyXWJNpqeVqXgeJLLcfk5c&callback=initMap">
-</script>

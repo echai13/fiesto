@@ -1,7 +1,6 @@
 class Event < ApplicationRecord
   has_many :parties
   has_many :users, through: :parties
-  has_many :charges
   belongs_to :user
 
   validates :name, presence: true, length: { maximum: 50 }
@@ -29,12 +28,8 @@ class Event < ApplicationRecord
     where("id = ?", "#{search}").select(:name)
   end
 
-  validates :price, presence: true, numericality: { greater_than: 0 }
-  def price_in_cents
-    (price * 100).to_i
-  end
-
   def self.user_deletion(u_id)
     where("user_id = ?" , "#{u_id}")
   end
+
 end

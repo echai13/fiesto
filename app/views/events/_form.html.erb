@@ -11,8 +11,6 @@
     </div>
   <% end %>
 
-
-
   <div class="field">
     <%= f.text_field :name,label: "Name"%>
   </div>
@@ -30,14 +28,8 @@
   </div>
 
   <div class="field">
-    <%= f.number_field :price, :step => 0.01 %>
+    <%= f.file_field :avatar, label: "Event Picture"%>
   </div>
-
-  <div class="field">
-    <%= f.file_field :avatar %>
-  </div>
-
-    <%= render 'bank_account', f: f %>
 
   <div class="actions">
     <%= f.submit %>

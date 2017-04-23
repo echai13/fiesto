@@ -1,13 +1,10 @@
 class User < ApplicationRecord
   has_many :parties
   has_many :events, through: :parties
-  has_many :charges
 
   attr_accessor :remember_token
 
   before_save { self.email = email.downcase}
-  # after_commit :assign_customer_id, on: :create
-
   validates :username, presence: true, length: { maximum: 50 },
                        uniqueness: {case_sensitive: false }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[brandeis]+\.[edu]+\z/i
