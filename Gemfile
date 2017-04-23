@@ -4,6 +4,7 @@ ruby '2.3.1'
 
 gem 'rails',        '5.0.1'
 #gem 'pg', '0.18.4'
+gem 'geocoder'
 gem 'paperclip'
 gem 'bootstrap_form'
 gem 'aws-sdk', '~> 2.3'
