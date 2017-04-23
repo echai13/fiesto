@@ -2,6 +2,8 @@ class Event < ApplicationRecord
   has_many :parties
   has_many :users, through: :parties
   belongs_to :user
+  geocoded_by :location   # can also be an IP address
+  after_validation :geocode          # auto-fetch coordinates
 
   validates :name, presence: true, length: { maximum: 50 }
 
