@@ -28,8 +28,17 @@
   </div>
 
   <div class="field">
+    <%= f.label :price %>
+    <%= f.number_field :price, :step => 0.01 %>
+  </div>
+
+  <div class="field">
     <%= f.file_field :avatar, label: "Event Picture"%>
   </div>
+
+  <% if !current_user.account_id? %>
+    <%= render 'bank_account', f: f %>
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>
