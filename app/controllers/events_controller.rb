@@ -9,7 +9,6 @@ class EventsController < ApplicationController
     if (current_user != nil)
       current_user.update(:latitude => location_info.latitude)
       current_user.update(:longitude => location_info.longitude)
-      current_user.reverse_geocode
     end
   end
 
