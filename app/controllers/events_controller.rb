@@ -5,6 +5,11 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+    location_info = request.location
+    if (current_user != nil)
+      current_user.update_attributes(:latitude => location_info.latitude)
+      current_user.update_attributes(:longitude => location_info.longitude)
+    end
   end
 
   # GET /events/1

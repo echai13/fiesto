@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170423224020) do
+ActiveRecord::Schema.define(version: 20170423235834) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20170423224020) do
     t.string   "cardnumber"
     t.date     "expdate"
     t.boolean  "admin",           default: false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
 end

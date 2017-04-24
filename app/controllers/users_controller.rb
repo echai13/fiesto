@@ -64,6 +64,7 @@ class UsersController < ApplicationController
    end
  end
 
+ #user deletion by admin
  def destroy
    Party.user_deletion(params[:id]).each do |temp|
      temp.destroy
