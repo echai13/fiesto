@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   get '/charges', to: 'charges#new'
   post '/charges', to: 'charges#create'
+  post 'tokens' => "tokens#create"
 
 
 
