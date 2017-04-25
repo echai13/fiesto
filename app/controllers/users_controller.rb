@@ -56,6 +56,9 @@ class UsersController < ApplicationController
   def create
    @user = User.new(user_params)
    if @user.save
+     Stripe.api_key = "sk_test_e3a2WOvBkQpgRrufKzprhHhn"
+     customer = Stripe::Customer.create(email: @user.email)
+     @user.update_attribute(:customer_id, customer.id)
      log_in @user
      flash[:success] = "Welcome to the Fiesto!"
      redirect_to @user

@@ -9,7 +9,6 @@ class EventsController < ApplicationController
     if (current_user != nil)
       current_user.update(:latitude => location_info.latitude)
       current_user.update(:longitude => location_info.longitude)
-      current_user.reverse_geocode
     end
   end
 
@@ -60,6 +59,27 @@ class EventsController < ApplicationController
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
+
+    puts @event.routing
+    if @event.routing.present? && @event.account.present?
+      puts "enter"
+      Stripe.api_key = "sk_test_e3a2WOvBkQpgRrufKzprhHhn"
+
+      acct = Stripe::Account.create(
+      {
+        :country => 'US',
+        :managed => true,
+        :external_account => {
+          :object => 'bank_account',
+          :country => 'US',
+          :currency => 'usd',
+          :routing_number => @event.routing,
+          :account_number => @event.account,
+        }
+      }
+      )
+      current_user.update_attributes(:account_id => acct.id)
+    end
   end
 
   # PATCH/PUT /events/1
@@ -99,6 +119,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :date, :time, :location, :avatar)
+      params.require(:event).permit(:name, :date, :time, :location, :avatar, :price, :routing, :account)
     end
 end

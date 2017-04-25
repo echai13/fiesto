@@ -12,6 +12,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
+    log_in_as(@user)
     get new_event_url
     assert_response :success
   end
@@ -22,7 +23,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get new_event_url
     assert_difference('Event.count') do
-      post events_url, params: { event: { date: @event.date, location: @event.location, name: @event.name, time: @event.time } }
+      post events_url, params: { event: { date: @event.date, location: @event.location, name: @event.name, time: @event.time} }
       #geocoder test
       # puts Event.first.latitude
       # assert_not_nil (@event.latitude)

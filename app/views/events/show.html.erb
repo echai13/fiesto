@@ -52,6 +52,12 @@
     </ol>
 </p>
 </div>
+<p>
+  <strong>Price:</strong>
+  <%= number_to_currency(@event.price) %>
+</p>
+
+<%= link_to 'RSVP', charges_path(:event_id => @event.id, :event_price => @event.price.to_f, :event_host => @event.user_id) %>
 
 <div class = "col-sm-3">
 <% if logged_in? && @event.user_id == current_user.id%>
