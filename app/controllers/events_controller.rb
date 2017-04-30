@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  include EventsHelper
 
   # GET /events
   # GET /events.json
@@ -16,6 +17,9 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @party = Party.all
+    gon.latlong = calc_cor (@event.location)
+
+    @map = map
   end
 
   #Party Signups
