@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170424034326) do
+ActiveRecord::Schema.define(version: 20170501211736) do
 
   create_table "charges", force: :cascade do |t|
     t.string   "email"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20170424034326) do
     t.float    "longitude"
     t.string   "customer_id"
     t.string   "account_id"
+    t.integer  "radius"
   end
 
 end

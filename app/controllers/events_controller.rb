@@ -1,15 +1,19 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   include EventsHelper
+  helper_method
 
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
     location_info = request.location
-    if (current_user != nil)
-      current_user.update(:latitude => location_info.latitude)
-      current_user.update(:longitude => location_info.longitude)
+    #retrieves data if logged on
+    if current_user != nil
+      #search based on search radius
+      @events = Event.near([location_info.latitude, location_info.longitude], current_user.radius)
+    else
+      #search based on
+      @events = Event.all
     end
   end
 
@@ -18,7 +22,6 @@ class EventsController < ApplicationController
   def show
     @party = Party.all
     gon.latlong = calc_cor (@event.location)
-
     @map = map
   end
 

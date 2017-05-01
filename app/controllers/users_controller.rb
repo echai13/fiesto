@@ -55,10 +55,12 @@ class UsersController < ApplicationController
   #signup page
   def create
    @user = User.new(user_params)
+   @user.update_attribute(:radius, 5)
    if @user.save
      Stripe.api_key = "sk_test_e3a2WOvBkQpgRrufKzprhHhn"
      customer = Stripe::Customer.create(email: @user.email)
      @user.update_attribute(:customer_id, customer.id)
+     #defaults to 5 mile radius
      log_in @user
      flash[:success] = "Welcome to the Fiesto!"
      redirect_to @user
@@ -84,7 +86,7 @@ class UsersController < ApplicationController
 
    def user_params
      params.require(:user).permit(:username, :email, :password,
-                                  :password_confirmation)
+                                  :password_confirmation, :radius)
    end
 
    def logged_in_user

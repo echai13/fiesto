@@ -9,8 +9,12 @@ module EventsHelper
     url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{location}&key=#{key}"
     json_response = open(url).read
     response = JSON.parse(json_response)
-    coordinates = response['results'][0]['geometry']['location']
-    return coordinates
+    begin
+      coordinates = response['results'][0]['geometry']['location']
+      return coordinates
+    rescue NoMethodError
+      return JSON.parse('{"lat" : 42.36637398029149,"lng" : -71.2535282197085}')
+    end
   end
 
   def map

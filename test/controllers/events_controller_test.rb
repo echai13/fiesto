@@ -4,6 +4,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:kelvin)
     @event = events(:one)
+    @brandeis = events(:brandeis)
   end
 
   test "should get index" do
@@ -33,6 +34,12 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to event_url(Event.last)
   end
+
+  # test "should show all parties" do
+  #   #log_in_as(@user)
+  #   get events_url
+  #   assert_equal(@events.count, Event.all.count)
+  # end
 
   # test "should show event" do
   #   get event_url(@event)
