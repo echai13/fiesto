@@ -10,20 +10,26 @@
     </aside>
 </div>
 
-<div class = "row">
-   <div id = "show_party">
-    Current Registered Parties:
-    <table id = "current_table">
-        <% Party.all.each do |party| %>
-          <% if party.user_id == current_user.id %>
-          <tr>
-            <td><%= link_to Event.name_by_id(party.event_id).first.name, Event.find(party.event_id) %></td>
-            <td><%= link_to 'Delete', { action: "drop", id: party.event_id }, data: { confirm: 'Are you sure?' }, :method => :post %></td>
-          </tr>
-          <% end %>
-        <% end %>
-    </table>
+<h1>Current Registed Parties</h1>
+<div class="col-md-12 all-events">
+    <% @counter = 0 %>
+    <% Party.all.each do |party| %>
+    <% if party.user_id == current_user.id %>
+      <% if @counter < 3 %>
+      <div class="own-event">
+        <div class="color-box">
+        <p><%= image_tag Event.find(party.event_id).avatar.url(:thumb) %></p>
+        <p><%= link_to Event.name_by_id(party.event_id).first.name, Event.find(party.event_id) %></p>
+        <p><%= link_to 'Delete', { action: "drop", id: party.event_id }, data: { confirm: 'Are you sure?' }, :method => :post %></p>
+        <p><%= @ffs %></p>
+        </div>
+      </div>
+      <% @counter += 1 %>
+      <% end %>
+      <% end %>
+    <% end %>
 </div>
+
 </div>
 
 <div class = "row">
