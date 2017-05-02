@@ -33,5 +33,5 @@ class Event < ApplicationRecord
   def self.user_deletion(u_id)
     where("user_id = ?" , "#{u_id}")
   end
-  
+
 end

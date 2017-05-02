@@ -15,3 +15,10 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function(){
+  $(document).on("keyup", "input#search", function() {
+    $.get($("#search-form").attr("action"), $("#search-form").serialize(), null, "script");
+    return false;
+  });
+});

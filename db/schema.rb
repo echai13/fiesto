@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501211736) do
+ActiveRecord::Schema.define(version: 20170502005457) do
 
   create_table "charges", force: :cascade do |t|
     t.string   "email"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170501211736) do
     t.string   "routing"
     t.string   "account"
     t.decimal  "price",               precision: 10, scale: 2
+    t.integer  "attendees"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 

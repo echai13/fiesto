@@ -5,7 +5,6 @@
 
     <% if logged_in? %>
     <p> What do you want to see today? </p>
-
     <% else %>
       <%= render :file => 'sessions/new.html.erb' %>
     <% end %>

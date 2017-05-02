@@ -1,40 +1,56 @@
-<body class="background-image">
-
-<h1>Parties</h1>
+<%= video_tag "people-partying", autoplay: true, muted: true, loop: true, class: "video" %>
 <p class="new-event">
 <% if logged_in? %>
-  <%= link_to 'New Event', new_event_path %>
+  <%= link_to 'New Event', new_event_path, class: "new-button" %>
 <% end %>
 </p>
 
-
-<!-- <table>
-  <thead>
-    <tr>
-      <th>Party Name</th>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Location</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead> -->
-
-  <!-- <tbody> -->
-  <div class="col-md-12 all-events">
-    <% @events.each do |event| %>
+<h1 class="party-sort">Most Popular Parties</h1>
+<div class="col-md-12 all-events">
+    <% @event = Event.all.order('attendees DESC') %>
+    <% @counter = 0 %>
+    <% @event.each do |event| %>
+      <% if @counter < 3 %>
       <div class="own-event">
         <div class="color-box">
         <p><%= image_tag event.avatar.url(:thumb) %></p>
         <p><%= link_to "#{event.name}", event %></p>
         <p><%= @ffs %></p>
-        <!-- <p><%= event.date %>
-        <p><%= event.time %>
-        <p><%= event.location %> -->
         </div>
-
-        <!-- <td><%= link_to 'Show', event %></td>-->
-    </div>
+      </div>
+      <% @counter += 1 %>
+      <% end %>
     <% end %>
-  </div>
-  <!-- </tbody>
-</table> -->
+</div>
+
+
+<h1>Newly Added Parties</h1>
+<div class="col-md-12 all-events">
+    <% @event = Event.all.order('updated_at DESC') %>
+    <% @counter = 0 %>
+    <% @event.each do |event| %>
+      <% if @counter < 3 %>
+      <div class="own-event">
+        <div class="color-box">
+        <p><%= image_tag event.avatar.url(:thumb) %></p>
+        <p><%= link_to "#{event.name}", event %></p>
+        <p><%= @ffs %></p>
+        </div>
+      </div>
+      <% @counter += 1 %>
+      <% end %>
+    <% end %>
+</div>
+
+<h1>All Parties</h1>
+<div class="col-md-12 all-events">
+    <% Event.all.each do |event| %>
+      <div class="own-event">
+        <div class="color-box">
+        <p><%= image_tag event.avatar.url(:thumb) %></p>
+        <p><%= link_to "#{event.name}", event %></p>
+        <p><%= @ffs %></p>
+        </div>
+      </div>
+    <% end %>
+</div>
