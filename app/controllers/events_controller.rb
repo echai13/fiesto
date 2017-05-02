@@ -12,6 +12,8 @@ class EventsController < ApplicationController
       #search based on search radius
       @my_events = Event.user_deletion(current_user.id)
       @events = Event.near([location_info.latitude, location_info.longitude], current_user.radius)
+      current_user.update(:latitude => location_info.latitude)
+      current_user.update(:longitude => location_info.longitude)
     else
       #search based on
       @my_events = nil
