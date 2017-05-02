@@ -10,7 +10,11 @@ class EventsController < ApplicationController
     #retrieves data if logged on
     if current_user != nil
       #search based on search radius
+      @temp = Event.user_deletion(current_user.id)
       @events = Event.near([location_info.latitude, location_info.longitude], current_user.radius)
+      if @events != nil
+        @events = @events.merge(@temp)
+      end
     else
       #search based on
       @events = Event.all

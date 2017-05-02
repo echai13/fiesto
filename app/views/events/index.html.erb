@@ -5,29 +5,11 @@
 <% end %>
 </p>
 
-<h1 class="party-sort">Most Popular Parties</h1>
-<div class="col-md-12 all-events">
-    <% @event = Event.all.order('attendees DESC') %>
-    <% @counter = 0 %>
-    <% @event.each do |event| %>
-      <% if @counter < 3 %>
-      <div class="own-event">
-        <div class="color-box">
-        <p><%= image_tag event.avatar.url(:thumb) %></p>
-        <p><%= link_to "#{event.name}", event %></p>
-        </div>
-      </div>
-      <% @counter += 1 %>
-      <% end %>
-    <% end %>
-</div>
 
-
-<h1>Newly Added Parties</h1>
+<h1>Parties Near Me</h1>
 <div class="col-md-12 all-events">
-    <% @event = Event.all.order('updated_at DESC') %>
     <% @counter = 0 %>
-    <% @event.each do |event| %>
+    <% @events.each do |event| %>
       <% if @counter < 3 %>
       <div class="own-event">
         <div class="color-box">
