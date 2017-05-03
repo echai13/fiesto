@@ -84,19 +84,7 @@
 <%= button_to 'Back', "/", :class => 'event-button', :method => :get %>
 </div>
 
-<script>
-   function initMap() {
-     var display = gon.latlong
-     var map = new google.maps.Map(document.getElementById('map'), {
-       zoom: 15,
-       center: display
-     });
-     var marker = new google.maps.Marker({
-       position: display,
-       map: map
-     });
-   }
-</script>
+<%= javascript_include_tag "map" %>
 <script async defer>
 <%= raw @map %>
 </script>
