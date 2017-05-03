@@ -2,6 +2,9 @@
 <p class="new-event">
     <% if logged_in? %>
     <%= link_to 'New Event', new_event_path, class: "new-button" %>
+      <% if @heat %>
+        <%= button_to 'Expand Radius', '/expand', :method => :post, :class => 'new-button'%>
+      <% end %>
     <% end %>
 </p>
 
@@ -41,12 +44,16 @@
 
 <h1>All Parties</h1>
 <div class="col-md-12 all-events">
+    <% @counter = 0 %>
     <% Event.all.each do |event| %>
+    <% if @counter < 3 %>
     <div class="own-event">
         <div class="color-box">
             <p><%= image_tag event.avatar.url(:thumb) %></p>
             <p><%= link_to "#{event.name}", event %></p>
         </div>
     </div>
+    <% @counter += 1 %>
+    <% end %>
     <% end %>
 </div>

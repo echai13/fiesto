@@ -82,6 +82,12 @@ class UsersController < ApplicationController
    redirect_to users_url
  end
 
+ def expand
+    if current_user != nil
+      current_user.update(:radius => (current_user.radius + 2))
+    end
+ end
+
  private
 
    def user_params
