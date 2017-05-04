@@ -4,6 +4,7 @@
 /* universal */
 * {
     font-family: 'Rockwell';
+    max-width: 100%;
 }
 
 .event-button {
@@ -127,39 +128,15 @@ footer ul li {
     margin-left: 15px;
 }
 /* sidebar */
-aside {
-    section.user_info {
-        margin-top: 20px;
-    }
-
-    section {
-        padding: 10px 0;
-        margin-top: 20px;
-
-        &:first-child {
-            border: 0;
-            padding-top: 0;
-        }
-
-        span {
-            display: block;
-            margin-bottom: 3px;
-            line-height: 1;
-        }
-
-        h1 {
-            font-size: 1.4em;
-            text-align: left;
-            letter-spacing: -1px;
-            margin-bottom: 3px;
-            margin-top: 0;
-        }
-    }
+.user_info {
+    margin-top: 20px;
+    text-align: center;
 }
 
 .gravatar {
-    float: left;
-    margin-right: 10px;
+  margin-top: 20px;
+  height: 150px;
+  width: 150px;
 }
 
 .gravatar_edit {
@@ -302,10 +279,10 @@ img {
 
 .radius-slider {
   position: relative;
-  margin-top: 150px;
+  margin-top: 70px;
   width: 100%;
   height: 300px;
-  background-color: gray;
+  background-color: orange;
 }
 
 #ex1Slider {
@@ -370,14 +347,40 @@ img {
 }
 
 .host-party {
-  margin-top: 500px;
+  position: relative;
+  margin-top: 490px;
   padding: 0;
   height: 250px !important;
-  width: auto;
-  background-color: #ff9999;
+  background-color: LightCoral;
 }
 
 .host-party h3 {
   font-size: 32px;
   text-align: center;
+}
+
+.form-styling {
+  width: 500px;
+  padding-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.outer-form {
+  background-color: #ff9999;
+  width: 800px;
+  height: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.top-section {
+  margin-top: 50px;
+}
+
+.parties-section {
+  background-color: LightCoral;
+  margin-top: 300px;
+  height: 100%;
+  padding-bottom: 300px;
 }
