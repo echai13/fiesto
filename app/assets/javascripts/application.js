@@ -13,12 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require bootstrap-slider
 //= require turbolinks
 //= require_tree .
 
-$(document).on('turbolinks:load', function(){
-  $(document).on("keyup", "input#search", function() {
-    $.get($("#search-form").attr("action"), $("#search-form").serialize(), null, "script");
-    return false;
-  });
+$(function() {
+$('#ex1').slider({
+	formatter: function(value) {
+		return 'Current radius: ' + value + 'mi';
+	}
+});
 });
