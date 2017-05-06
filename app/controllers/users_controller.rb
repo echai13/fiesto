@@ -92,7 +92,7 @@ class UsersController < ApplicationController
     if current_user != nil
       current_user.update(:radius => (current_user.radius + 2))
     end
-    redirect_to users_url
+    redirect_to '/'
  end
 
  def sex_check
