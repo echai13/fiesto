@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get '/charges', to: 'charges#new'
   post '/charges', to: 'charges#create'
   post 'tokens' => "tokens#create"
-  post '/expand', to: 'user#expand'
+  post '/expand', to: 'users#expand'
 
 
 
