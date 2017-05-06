@@ -34,4 +34,8 @@ class Event < ApplicationRecord
     where("user_id = ?" , "#{u_id}")
   end
 
+  def self.find_by_party(event_id)
+    where("id = ?", "#{event_id}").first
+  end
+
 end

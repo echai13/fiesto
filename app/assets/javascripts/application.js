@@ -17,7 +17,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(function() {
+window.onload = (function() {
 $('#ex1').slider({
 	formatter: function(value) {
 		return 'Current radius: ' + value + 'mi';

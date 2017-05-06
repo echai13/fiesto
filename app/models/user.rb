@@ -45,4 +45,5 @@ class User < ApplicationRecord
   def self.name_by_id(search)
     where("id = ?", "#{search}").select(:username)
   end
+
 end

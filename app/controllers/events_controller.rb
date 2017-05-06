@@ -72,18 +72,9 @@ class EventsController < ApplicationController
     @current = User.find_by id: session[:user_id]
     @event.user_id = @current.id
 
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
-
     puts @event.routing
     if @event.routing.present? && @event.account.present?
+      @date = current_user.dob
       puts "enter"
       Stripe.api_key = "sk_test_e3a2WOvBkQpgRrufKzprhHhn"
 
@@ -100,8 +91,29 @@ class EventsController < ApplicationController
         }
       }
       )
+
+      acct.legal_entity.dob.day = @date.strftime("%d")
+      acct.legal_entity.dob.month = @date.strftime("%m")
+      acct.legal_entity.dob.year = @date.strftime("%Y")
+      acct.legal_entity.first_name = current_user.first_name
+      acct.legal_entity.last_name = current_user.last_name
+      acct.legal_entity.type = "individual"
+      acct.tos_acceptance.date = Time.now.to_i
+      acct.tos_acceptance.ip = request.remote_ip
+      acct.save
       current_user.update_attributes(:account_id => acct.id)
     end
+
+    respond_to do |format|
+      if @event.save
+        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.json { render :show, status: :created, location: @event }
+      else
+        format.html { render :new }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
   # PATCH/PUT /events/1

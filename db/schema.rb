@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502005457) do
+ActiveRecord::Schema.define(version: 20170506192138) do
 
   create_table "charges", force: :cascade do |t|
     t.string   "email"
@@ -45,6 +45,9 @@ ActiveRecord::Schema.define(version: 20170502005457) do
     t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "rating"
+    t.string   "comment"
+    t.boolean  "attended"
     t.index ["event_id"], name: "index_parties_on_event_id"
     t.index ["user_id"], name: "index_parties_on_user_id"
   end
@@ -59,16 +62,17 @@ ActiveRecord::Schema.define(version: 20170502005457) do
     t.datetime "updated_at",                      null: false
     t.string   "password_digest"
     t.string   "remember_digest"
-    t.string   "firstname"
-    t.string   "lastname"
-    t.string   "cardnumber"
-    t.date     "expdate"
     t.boolean  "admin",           default: false
     t.float    "latitude"
     t.float    "longitude"
     t.string   "customer_id"
     t.string   "account_id"
     t.integer  "radius"
+    t.boolean  "card_avail"
+    t.integer  "passcode"
+    t.date     "dob"
+    t.boolean  "verify"
+    t.boolean  "offender"
   end
 
 end
