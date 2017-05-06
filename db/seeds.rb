@@ -10,14 +10,17 @@ User.create!(username:  "Example User",
              email: "example@brandeis.edu",
              password:              "foobar",
              password_confirmation: "foobar",
-             admin: true)
+             admin: true,
+             radius: 5)
 
 99.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@brandeis.edu"
   password = "password"
+  radius = 5
   User.create!(username:  name,
                email: email,
                password:              password,
-               password_confirmation: password)
+               password_confirmation: password,
+               radius: 5)
 end

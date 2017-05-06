@@ -35,6 +35,17 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to event_url(Event.last)
   end
 
+  # test "should expand radius" do
+  #   log_in_as(@user)
+  #   get events_url
+  #   assert_difference('@user.radius') do
+  #     post '/expand'
+  #   end
+  #
+  #
+  #
+  # end
+
   # test "should show all parties" do
   #   #log_in_as(@user)
   #   get events_url

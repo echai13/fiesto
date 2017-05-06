@@ -19,6 +19,7 @@ kelvin:
   email: kelvin@brandeis.edu
   password_digest: <%= User.digest('password') %>
   admin: true
+  radius: 5
 
 
 erica:
