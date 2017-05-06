@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :drop]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
+  helper_method :sex_check
 
   def new
     #prevents user from accessing signup when already logged in
@@ -55,15 +56,20 @@ class UsersController < ApplicationController
   #signup page
   def create
    @user = User.new(user_params)
-   @user.update_attribute(:radius, 5)
    if @user.save
+     @user.update_attribute(:radius, 5)
      Stripe.api_key = "sk_test_e3a2WOvBkQpgRrufKzprhHhn"
      customer = Stripe::Customer.create(email: @user.email)
      @user.update_attribute(:customer_id, customer.id)
+     @user.update_attribute(:verify, FALSE)
+     @user.update_attribute(:card_avail, FALSE)
+
      #defaults to 5 mile radius
      log_in @user
      flash[:success] = "Welcome to the Fiesto!"
      redirect_to @user
+
+
    else
      render 'new'
    end
@@ -88,11 +94,29 @@ class UsersController < ApplicationController
     end
  end
 
- private
+ def sex_check
+   require 'net/http'
+   require 'json'
+   @url = "http://services.familywatchdog.us/rest/json.asp?key=F413B188-9C3B-4A19-A286-6BDEF26A84E1&lite=1&type=searchbynamedob&fname=" + current_user.first_name + "&lname=" + current_user.last_name + "&dob=" + current_user.dob.strftime("%m") + "/" + current_user.dob.strftime("%d") + "/" + current_user.dob.strftime("%y")
 
-   def user_params
+   uri = URI(@url)
+   response = Net::HTTP.get(uri)
+
+   h = JSON.parse response
+   if h["offenders"][0].nil?
+     puts "Not an offender"
+     current_user.offender = FALSE
+   else
+     puts "Is an offender"
+     current_user.offender = TRUE
+   end
+   current_user.save
+end
+
+ private
+    def user_params
      params.require(:user).permit(:username, :email, :password,
-                                  :password_confirmation, :radius)
+                                  :password_confirmation, :radius, :first_name, :last_name, :dob, :passcode)
    end
 
    def logged_in_user

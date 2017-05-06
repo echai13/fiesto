@@ -18,8 +18,14 @@ Rails.application.routes.draw do
   get '/charges', to: 'charges#new'
   post '/charges', to: 'charges#create'
   post 'tokens' => "tokens#create"
+<<<<<<< HEAD
   post '/expand', to: 'users#expand'
 
 
+=======
+  post '/expand', to: 'user#expand'
+  get '/verify', to:'events#verify'
+  post '/parties', to: 'parties#review'
+>>>>>>> 3b9fe42f98a1165157e08810692f555cc3ce3db6
 
 end

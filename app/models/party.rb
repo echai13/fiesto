@@ -14,5 +14,9 @@ class Party < ApplicationRecord
     where("user_id = ?" , "#{u_id}")
   end
 
+  def self.party_exist(user_id, event_id)
+    where(:user_id => user_id, :event_id => event_id).exists?
+  end
+
 
 end
