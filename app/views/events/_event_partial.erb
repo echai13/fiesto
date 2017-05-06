@@ -1,12 +1,16 @@
 <h1>Parties Near Me</h1>
 <div class="col-md-12 all-events">
+    <% @counter = 0 %>
     <% @events.each do |event| %>
+    <% if @counter < 3 %>
     <div class="own-event">
         <div class="color-box">
             <p><%= image_tag event.avatar.url(:thumb) %></p>
             <p><%= link_to "#{event.name}", event %></p>
         </div>
     </div>
+    <% @counter += 1 %>
+    <% end %>
     <% end %>
 </div>
 
@@ -14,13 +18,17 @@
 <% if logged_in? %>
 <h1>My Parties</h1>
 <div class="col-md-12 all-events">
+    <% @counter = 0 %>
     <% @my_events.each do |event| %>
+    <% if @counter < 3 %>
     <div class="own-event">
         <div class="color-box">
             <p><%= image_tag event.avatar.url(:thumb) %></p>
             <p><%= link_to "#{event.name}", event %></p>
         </div>
     </div>
+    <% @counter += 1 %>
+    <% end %>
     <% end %>
 </div>
 <% end %>

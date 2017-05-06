@@ -18,7 +18,7 @@ class EventsController < ApplicationController
       @events = Event.near([location_info.latitude, location_info.longitude], current_user.radius)
       current_user.update(:latitude => location_info.latitude)
       current_user.update(:longitude => location_info.longitude)
-        new_radius = current_user.radius + 400
+        new_radius = current_user.radius + 2
       @heat_zone = Event.near([location_info.latitude, location_info.longitude], new_radius)
       if @heat_zone != nil
         if @heat_zone.count(:all) - @events.count(:all) > 2
