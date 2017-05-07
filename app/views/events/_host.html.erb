@@ -2,12 +2,10 @@
 <h1>My Parties</h1>
 <div class="col-md-12 all-events">
     <% @my_events.each do |event| %>
-    <div class="own-event">
         <div class="color-box">
             <p><%= image_tag event.avatar.url(:thumb) %></p>
             <p><%= link_to "#{event.name}", event %></p>
         </div>
-    </div>
     <% end %>
 </div>
 <% end %>
