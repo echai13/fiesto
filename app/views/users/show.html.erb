@@ -1,12 +1,11 @@
 <% provide(:title, @user.username) %>
-<div class="row">
     <div class="user_info">
       <h1>
         <%= gravatar_for @user %>
         <%= @user.username %>
       </h1>
     </div>
-</div>
+
 
 <!--- sex offend check yet? -->
 <% if @user.verify && @user.offender.nil? %>
@@ -31,7 +30,7 @@
     </div>
     <% end %>
     <% end %>
-
+</div>
 <h1>Current Registered Parties</h1>
 <div class="col-md-12 all-events">
     <% Party.all.each do |party| %>

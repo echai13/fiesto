@@ -130,7 +130,7 @@ footer ul li {
 /* sidebar */
 .user_info {
     margin-top: 20px;
-    text-align: center;
+    text-align: center !important;
 }
 
 .gravatar {
@@ -225,7 +225,7 @@ img {
     max-width: 300px;
     height: auto;
     width: auto;
-    margin-top: 10px;
+    margin-top: 70px;
 }
 
 .all-events {
@@ -351,7 +351,7 @@ img {
   margin-top: 490px;
   padding: 0;
   height: 250px !important;
-  background-color: LightCoral;
+  background-color: red;
 }
 
 .host-party h3 {
