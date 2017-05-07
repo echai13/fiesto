@@ -34,8 +34,12 @@ def create
         }
         )
       end
+      puts "current party"
+      @current_party = Party.find_by_id(params[:party_id])
+      @current_party.attended = TRUE
+      @current_party.save
       redirect_to(:back)
-    
+
 
   elsif current_user.card_avail.nil? #just add card to Stripe without charging
     customer = Stripe::Customer.retrieve(current_user.customer_id)

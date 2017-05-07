@@ -1,6 +1,7 @@
 class Party < ApplicationRecord
   belongs_to :user
   belongs_to :event
+  has_many :charges
 
   def self.existing(u_id,e_id)
     where("user_id = ? AND event_id = ?", "#{u_id}", "#{e_id}")

@@ -27,11 +27,18 @@
         </td>
         <% if @event.user_id == current_user.id %>
         <td>
-          <%= form_tag charges_path(:user_id => party.user_id, :event_price => @event.price.to_f, :event_host => @event.user_id, :id => @event.id) do %>
+          <% if Party.find_by_id(party.id).attended %>
+            Paid. Attending right now.
+          <% else %>
+          <%= form_tag charges_path(:user_id => party.user_id, :event_price => @event.price.to_f, :event_host => @event.user_id, :id => @event.id, :party_id => party.id) do %>
           <div class="field">
             <%= text_field_tag(:enter) %>
           </div>
+
+        </td>
+        <td>  
           <%= submit_tag("Attend") %>
+          <% end %>
           <% end %>
         </td>
         <% end %>
@@ -48,7 +55,7 @@
 
     <!-- Rating and comments for party -->
     <!---if event has already passed? -->
-    <% if @event.time < Time.now %>
+    <% if @event.time < Time.now && @event.date < DateTime.now %>
       <h3>Reviews for party</h3>
       <% Party.all.each do |party| %>
         <% if party.event_id == @event.id && !party.rating.nil?%>
