@@ -20,7 +20,8 @@ class Event < ApplicationRecord
     :large    => '-set colorspace sRGB -strip',
     :retina   => '-set colorspace sRGB -strip -sharpen 0x0.5'
   },
-  :url => "http://fiesto-app.s3.amazonaws.com/images/:attachment/:id/:basename_:style.:extension"
+  :url => "http://fiesto-app.s3.amazonaws.com/images/:attachment/:id/:basename_:style.:extension",
+  :default_url => "/images/normal/missing.png"
 
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
