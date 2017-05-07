@@ -16,7 +16,7 @@
 
 <!---sends a token to create in charges controller --->
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="pk_test_BD3Ge0JJQJJTajV4XBxiIOJD"
+          data-key="<%= Rails.application.secrets.STRIPE_PUBLISHABLE_KEY %>"
           data-description="Event fee payment"
           data-amount="<%= $amount %>"
           data-locale="auto"

@@ -11,7 +11,7 @@ class ChargesController < ApplicationController
 
 def create
   puts $amount
-  Stripe.api_key = "sk_test_e3a2WOvBkQpgRrufKzprhHhn"
+  Stripe.api_key = Rails.application.secrets.STRIPE_SECRET_KEY
   puts params[:enter].present?
   puts current_user.customer_id
 
@@ -41,7 +41,7 @@ def create
       redirect_to(:back)
 
 
-  elsif current_user.card_avail.nil? #just add card to Stripe without charging
+  elsif !current_user.card_avail #just add card to Stripe without charging
     customer = Stripe::Customer.retrieve(current_user.customer_id)
     customer.source = params[:stripeToken]
     customer.save
