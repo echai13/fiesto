@@ -55,33 +55,31 @@
             Want to host a party?
         </h3>
 
-          <% if @heat %>
-            <%= button_to 'Expand Radius', '/expand', :method => :post, :class => 'new-button'%>
-          <% end %>
+        <% if @heat %>
+        <%= button_to 'Expand Radius', '/expand', :method => :post, :class => 'new-button'%>
+        <% end %>
 
     </div>
 
-    <%= render 'event_partial' %>
+    <div class="col-md-12 all-events">
+        <div class="tab">
+            <button class="tablinks" onclick="load(event, 'near_div')">Nearby Parties</button>
+            <button class="tablinks" onclick="load(event, 'host_div')">Parties You're Hosting</button>
+            <button class="tablinks" onclick="load(event, 'all_div')">All Parties</button>
+        </div>
+
+        <div id="near_div" class="tabcontent"><%= render 'near' %></div>
+        <div id="host_div" class="tabcontent"><%= render 'host' %></div>
+        <div id="all_div" class="tabcontent"><%= render 'all' %></div>
+    </div>
 
     <div id="floater">
-      <% if logged_in? %>
+        <% if logged_in? %>
         <%= link_to 'Add <br/>Party'.html_safe, new_event_path, class: "btn btn-primary btn-circle btn-lg" %>
-      <% else %>
+    <% else %>
         <%= link_to 'Sign up or Log in', login_path, method: "get", class: "new-button" %>
-      <% end %>
+        <% end %>
     </div>
 
-    <script>
-        $(window).scroll(function () {
-            var winScrollTop = $(window).scrollTop();
-            var winHeight = $(window).height();
-            var floaterHeight = $('#floater').outerHeight(true);
-            //true so the function takes margins into account
-            var fromBottom = 20;
 
-            var top = winScrollTop + winHeight - floaterHeight - fromBottom;
-            $('#floater').css({
-                'top': top + 'px'
-            });
-        });
-    </script>
+<%= javascript_include_tag "event_render" %>

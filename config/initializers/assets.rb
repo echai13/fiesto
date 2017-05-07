@@ -12,3 +12,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.paths << "#{Rails.root}/app/assets/videos"
 Rails.application.config.assets.precompile += %w( map.js )
 Rails.application.config.assets.precompile += %w( bootstrap-slider.js )
+Rails.application.config.assets.precompile += %w( event_render.js )
