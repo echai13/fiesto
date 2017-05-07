@@ -50,22 +50,14 @@
         typeWriter(".animate", "true", 50);
     </script>
 
-    <div class="host-party">
-        <h3>
-            Want to host a party?
-        </h3>
-
-        <% if @heat %>
-        <%= button_to 'Expand Radius', '/expand', :method => :post, :class => 'new-button'%>
-        <% end %>
-
-    </div>
-
     <div class="col-md-12 all-events">
         <div class="tab">
             <button class="tablinks" onclick="load(event, 'near_div')">Nearby Parties</button>
             <button class="tablinks" onclick="load(event, 'host_div')">Parties You're Hosting</button>
             <button class="tablinks" onclick="load(event, 'all_div')">All Parties</button>
+            <% if @heat && logged_in?%>
+            <%= button_to 'Expand Radius', '/expand', :method => :post, :class => 'tablinks'%>
+            <% end %>
         </div>
 
         <div id="near_div" class="tabcontent"><%= render 'near' %></div>
