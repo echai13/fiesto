@@ -1,34 +1,14 @@
-<%= form_for(@user) do |f| %>
+<%= bootstrap_form_for(@user) do |f| %>
   <%= render 'shared/error_messages', object: @user %>
 
-<div class="form-group">
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name, class: 'form-control' %>
-
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name, class: 'form-control' %>
-</div>
-
-  <%= f.label :date_of_birth %>
-  <%= f.date_select :dob, class: 'form-control' %>
-
-  <%= f.label :username %>
   <%= f.text_field :username, class: 'form-control' %>
-
-  <%= f.label :email %>
+  <%= f.text_field :first_name, class: 'form-control' %>
+  <%= f.text_field :last_name, class: 'form-control' %>
+  <%= f.date_select :dob, class: 'form-control', label: "Date of Birth"%>
   <%= f.email_field :email, class: 'form-control' %>
-<div class="form-group">
-  <%= f.label :password %>
   <%= f.password_field :password, class: 'form-control' %>
-
-  <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
-</div>
-
-  <%= f.label :radius %>
   <%= f.number_field :radius, class: 'form-control' %>
-
-  <%= f.label :passcode %>
   <%= f.number_field :passcode, class: 'form-control' %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>

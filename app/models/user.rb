@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :charges
   attr_accessor :remember_token
 
-  before_save { self.email = email.downcase}
+  before_save { self.email = email.downcase, self.username = username.downcase}
   validates :username, presence: true, length: { maximum: 50 },
                        uniqueness: {case_sensitive: false }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[brandeis]+\.[edu]+\z/i

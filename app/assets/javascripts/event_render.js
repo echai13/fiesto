@@ -1,3 +1,7 @@
+$(document).ready(function(){
+  document.getElementById("defaultOpen").click();
+});
+
 function load(evt, div) {
     // Declare all variables
     var i,
