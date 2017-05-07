@@ -1,4 +1,3 @@
-<h1>Your Hosted Parties</h1>
 <div class="col-md-12 all-events">
   <% Event.all.each do |event| %>
     <% if event.user_id == current_user.id %>
