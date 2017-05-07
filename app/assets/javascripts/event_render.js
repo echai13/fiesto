@@ -6,7 +6,7 @@ $( document ).ready(function() {
       //true so the function takes margins into account
       var fromBottom = 20;
 
-      var top = winScrollTop + winHeight - floaterHeight - fromBottom;
+      var top = winScrollTop + floaterHeight
       $('#floater').css({
           'top': top + 'px'
       });
