@@ -130,7 +130,7 @@ footer ul li {
 /* sidebar */
 .user_info {
     margin-top: 20px;
-    text-align: center !important;
+    text-align: center;
 }
 
 .gravatar {
@@ -225,7 +225,7 @@ img {
     max-width: 300px;
     height: auto;
     width: auto;
-    margin-top: 70px;
+    margin-top: 10px;
 }
 
 .all-events {
@@ -277,27 +277,6 @@ img {
    width: 60%;
 }
 
-.radius-slider {
-  position: relative;
-  margin-top: 70px;
-  width: 100%;
-  height: 300px;
-  background-color: orange;
-}
-
-#ex1Slider {
-  width: 500px;
-}
-
-.slider-content {
-  padding-top: 50px;
-  text-align: center;
-}
-
-#ex1Slider .slider-selection {
-	background: #BABABA;
-}
-
 .party-sort {
   margin-top: -100px;
 }
@@ -315,6 +294,9 @@ img {
   font-size: 16px;
   margin: 8px 2px;
   cursor: pointer;
+  position: relative;
+  bottom: 0;
+  right: 0;
 }
 
 #hat-icon {
@@ -351,7 +333,7 @@ img {
   margin-top: 490px;
   padding: 0;
   height: 250px !important;
-  background-color: red;
+  background-color: LightCoral;
 }
 
 .host-party h3 {
@@ -390,4 +372,33 @@ img {
   display: inline-block;
   width: 30%;
 
+}
+
+/* Floating Button */
+
+#floater {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    width: 100px;
+    height: 150px;
+
+}
+
+#floater2 {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    width: 100px;
+    height: 250px;
+
+}
+
+.btn-circle.btn-lg {
+  width: 100px;
+  height: 100px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 50px;
 }
