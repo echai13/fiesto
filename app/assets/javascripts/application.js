@@ -16,11 +16,3 @@
 //= require bootstrap-slider
 //= require turbolinks
 //= require_tree .
-
-window.onload = (function() {
-$('#ex1').slider({
-	formatter: function(value) {
-		return 'Current radius: ' + value + 'mi';
-	}
-});
-});
