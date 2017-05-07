@@ -1,0 +1,29 @@
+<h1>Current Registered Parties</h1>
+<div class="col-md-12 all-events">
+    <% Party.all.each do |party| %>
+    <% if party.user_id == @user.id %>
+        <div class="color-box">
+        <p><%= image_tag Event.find(party.event_id).avatar.url(:thumb) %></p>
+        <p><%= link_to Event.name_by_id(party.event_id).first.name, Event.find(party.event_id) %></p>
+        <p><%= link_to 'Delete', { action: "drop", id: party.event_id }, data: { confirm: 'Are you sure?' }, :method => :post %></p>
+
+
+        <!--if event has passed, option to rate/comment -->
+        <% @event = Event.find_by_party(party.event_id) %>
+        <% if @event.time < Time.now %>
+        <%= form_tag parties_path(:user_id => party.user_id, :event_id => party.event_id) do %>
+
+        <div class="field">
+          <%= number_field_tag(:rating) %>
+        </div>
+
+        <div class="field">
+          <%= text_field_tag(:comment) %>
+        </div>
+        <%= submit_tag("Submit") %>
+        <% end %>
+        <% end %>
+        </div>
+      <% end %>
+    <% end %>
+</div>

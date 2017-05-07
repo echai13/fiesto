@@ -1,17 +1,3 @@
-$( document ).ready(function() {
-  $(window).scroll(function () {
-      var winScrollTop = $(window).scrollTop();
-      var winHeight = $(window).height();
-      var floaterHeight = $('#floater').outerHeight(true);
-      //true so the function takes margins into account
-      var fromBottom = 20;
-
-      var top = winScrollTop + floaterHeight
-      $('#floater').css({
-          'top': top + 'px'
-      });
-  });
-});
 function load(evt, div) {
     // Declare all variables
     var i,

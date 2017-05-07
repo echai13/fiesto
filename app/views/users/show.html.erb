@@ -6,67 +6,20 @@
       </h1>
     </div>
 
-
 <!--- sex offend check yet? -->
 <% if @user.verify && @user.offender.nil? %>
   <p> enter verify check </p>
   <% sex_check %>
 <% end %>
 
-
-
-
-<h1>Your Hosted Parties</h1>
 <div class="col-md-12 all-events">
-  <% Event.all.each do |event| %>
-    <% if event.user_id == current_user.id %>
-    <div class="own-event">
-      <div class="color-box">
-      <p><%= image_tag Event.find(event.id).avatar.url(:thumb) %></p>
-      <p><%= link_to Event.name_by_id(event.id).first.name, Event.find(event.id) %></p>
-      <p><%= link_to 'Delete', { action: "drop" }, data: { confirm: 'Are you sure?' }, :method => :post %></p>
-      <p><%= @ffs %></p>
-      </div>
+    <div class="tab">
+        <button class="tablinks" onclick="load(event, 'host_div')">Nearby Parties</button>
+        <button class="tablinks" onclick="load(event, 'current_div')">My Parties</button>
     </div>
-    <% end %>
-    <% end %>
-</div>
-<h1>Current Registered Parties</h1>
-<div class="col-md-12 all-events">
-    <% Party.all.each do |party| %>
-    <% if party.user_id == @user.id %>
-      <div class="own-event">
-        <div class="color-box">
-        <p><%= image_tag Event.find(party.event_id).avatar.url(:thumb) %></p>
-        <p><%= link_to Event.name_by_id(party.event_id).first.name, Event.find(party.event_id) %></p>
-        <p><%= link_to 'Delete', { action: "drop", id: party.event_id }, data: { confirm: 'Are you sure?' }, :method => :post %></p>
 
-
-        <!--if event has passed, option to rate/comment -->
-        <% @event = Event.find_by_party(party.event_id) %>
-        <% if @event.time < Time.now %>
-        <%= form_tag parties_path(:user_id => party.user_id, :event_id => party.event_id) do %>
-
-        <div class="field">
-          <%= number_field_tag(:rating) %>
-        </div>
-
-        <div class="field">
-          <%= text_field_tag(:comment) %>
-        </div>
-        <%= submit_tag("Submit") %>
-        <% end %>
-
-        <p><%= @ffs %></p>
-        <% end %>
-        </div>
-      </div>
-      <% end %>
-    <% end %>
+      <div id="host_div" class="tabcontent"><%= render 'host' %></div>
+      <div id="current_div" class="tabcontent"><%= render 'current' %></div>
 </div>
 
-<div class = "row">
-Geolocation:
-<%= current_user.latitude %>
-<%= current_user.longitude %>
-</div>
+<%= javascript_include_tag "event_render" %>
