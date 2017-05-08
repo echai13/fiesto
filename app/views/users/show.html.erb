@@ -3,6 +3,12 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.username %>
+        <% if @user.offender %>
+          <%= image_tag 'offender-icon.png', id: 'offender-icon' %>
+        <% else %>
+          <%= image_tag('safe-icon.png', id: 'safe-icon') %>
+        <% end %>
+
       </h1>
     </div>
 
