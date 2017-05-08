@@ -23,7 +23,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     get edit_user_path(@user)
     log_in_as(@user)
     assert_redirected_to edit_user_url(@user)
-    username  = "Foo Bar".downcase
+    username  = "Foo Bar"
     email = "foo@brandeis.edu"
     patch user_path(@user), params: { user: { username:  username,
                                               email: email,
@@ -32,7 +32,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
     assert_redirected_to @user
     @user.reload
-    assert_equal username,  @user.username
+    assert_equal username.downcase,  @user.username
     assert_equal email, @user.email
   end
 end
