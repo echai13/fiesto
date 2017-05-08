@@ -1,6 +1,6 @@
 <% provide(:title, @user.username) %>
-    <div class="user_info">
-      <h1>
+    <div class="col-md-4 user_info">
+      <h3>
         <%= gravatar_for @user %>
         <%= @user.username %>
         <% if @user.offender %>
@@ -9,7 +9,7 @@
           <%= image_tag('safe-icon.png', id: 'safe-icon') %>
         <% end %>
 
-      </h1>
+      </h3>
     </div>
 
 <!--- sex offend check yet? -->
@@ -18,7 +18,7 @@
   <% sex_check %>
 <% end %>
 
-<div class="col-md-12 all-events">
+<div class="col-md-4 all-events user-events">
     <div class="tab">
         <button class="tablinks" onclick="load(event, 'host_div')">My Parties</button>
         <button class="tablinks" onclick="load(event, 'current_div')">Parties I Am Attending</button>
