@@ -55,9 +55,6 @@
             <button class="tablinks" onclick="load(event, 'near_div')", id="defaultOpen">Nearby Parties</button>
             <button class="tablinks" onclick="load(event, 'host_div')">My Parties</button>
             <button class="tablinks" onclick="load(event, 'all_div')">All Parties</button>
-            <% if @heat && logged_in?%>
-            <%= button_to 'Expand Radius', '/expand', :method => :post, :class => 'tablinks'%>
-            <% end %>
         </div>
 
           <div id="near_div" class="tabcontent"><%= render 'near' %></div>
@@ -72,6 +69,12 @@
     <% else %>
         <%= link_to 'Log In', login_path, method: "get", class: "new_event_button" %>
         <% end %>
+    </div>
+
+    <div id="floater2">
+      <% if @heat && logged_in?%>
+        <%= button_to 'Expand Radius', '/expand', :method => :post, :class => 'heat_button'%>
+      <% end %>
     </div>
 
 
