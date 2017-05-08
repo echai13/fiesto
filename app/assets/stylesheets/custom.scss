@@ -1,6 +1,5 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "bootstrap-slider";
 /* universal */
 * {
     font-family: 'Rockwell';
@@ -95,9 +94,10 @@ p {
     text-decoration: none;
 }
 /* footer */
+
 footer {
     position: fixed;
-    height: auto;
+    height: 4%;
     width: 100%;
     left: 0;
     bottom: 10px;
