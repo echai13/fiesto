@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   post '/charges', to: 'charges#create'
   post 'tokens' => "tokens#create"
   post '/expand', to: 'users#expand'
-  get '/verify', to:'events#verify'
+  get '/verify', to:'users#verify'
+  post '/verify', to: 'users#verify_check'
   post '/parties', to: 'parties#review'
 
 end
