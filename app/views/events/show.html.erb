@@ -70,36 +70,43 @@
       <% end %>
     <% end %>
 
+    <p>
+        <strong>Event Chat:</strong>
+        <div class="row">
+         <div class="col-md-8">
+           <div id="messages"></div>
+           <input id="chat-input" class="form-control" type="text" placeholder="say anything"  autofocus />
+         </div>
+        </div>
+    </p>
       <!-- Chatbox for users -->
       <!-- show chat if it's host or user RSVP to event -->
-      <% Party.all.each do |party| %>
-        <% if (party.event_id == @event.id && party.user_id == current_user.id) %>
-          <%= render 'chat' %>
-        <% end %>
-      <% end %>
 
   <% end %>
 </div>
 
-<p>
-  <strong>Price:</strong>
-  <%= number_to_currency(@event.price) %>
-</p>
+
 
 <div class = "col-sm-3">
+  <p>
+    <strong>Price:</strong>
+    <%= number_to_currency(@event.price) %>
+  </p>
   <% if logged_in? && @event.user_id == current_user.id%>
     <%= button_to 'Edit', edit_event_path(@event), :method => :get, :class => 'event-button'%>
     <%= button_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'event-button'%>
   <% end %>
 
   <% if logged_in? && !Party.party_exist(current_user.id, @event.id)%>
-    <%= link_to 'RSVP', charges_path(:event_id => @event.id, :event_price => @event.price.to_f, :event_host => @event.user_id, :id => @event.id), :class => 'new-button' %>
+    <%= link_to 'RSVP', charges_path(:event_id => @event.id, :event_price => @event.price.to_f, :event_host => @event.user_id, :id => @event.id), :class => 'event-button' %>
   <% end %>
 
   <%= button_to 'Back', "/", :class => 'event-button', :method => :get %>
 </div>
 
 <%= javascript_include_tag "map" %>
+<%= javascript_include_tag '//media.twiliocdn.com/sdk/rtc/js/ip-messaging/v0.8/twilio-ip-messaging.min.js' %>
+<%= javascript_include_tag "chat" %>
 <script async defer>
 <%= raw @map %>
 </script>
