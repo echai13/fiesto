@@ -114,6 +114,37 @@ class UsersController < ApplicationController
    current_user.save
 end
 
+def verify
+end
+
+def verify_check
+  BlockScore.api_key = 'sk_test_c09ab82974083e676772876a24482e00'
+
+  puts "city #{params[:address_city]}"
+  person = BlockScore::Person.create(
+    birth_day: current_user.dob.strftime("%d"),
+    birth_month: current_user.dob.strftime("%m"),
+    birth_year: current_user.dob.strftime("%Y"),
+    document_type: 'ssn',
+    document_value: '0000',
+    name_first: current_user.first_name,
+    name_last: current_user.last_name,
+    address_street1: "#{params[:address_street1]}",
+    address_street2: "#{params[:address_street2]}",
+    address_city: "#{params[:address_city]}",
+    address_subdivision: "#{params[:address_state]}",
+    address_postal_code: "#{params[:address_postal_code]}",
+    address_country_code: 'US'
+  )
+
+  puts person.status
+  if person.status == 'valid'
+    puts 'enter'
+    current_user.verify = TRUE
+    current_user.save
+  end
+end
+
  private
     def user_params
      params.require(:user).permit(:username, :email, :password,

@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_many :parties
   has_many :events, through: :parties
   has_many :charges
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :ssn, :address_street1, :address_street2, :address_city, :address_state, :address_postal_code
 
   before_save {self.email = email.downcase}
   before_save {self.username = username.downcase}
