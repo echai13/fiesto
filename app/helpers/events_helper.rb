@@ -24,9 +24,13 @@ module EventsHelper
     return response
   end
 
-  def distance
-    key = "AIzaSyB8Y2tnZHjBCcyXWJNpqeVqXgeJLLcfk5c"
-
+  def guest?
+    Party.all.each do |party|
+      if party.user_id == current_user.id
+        return true
+      end
+    end
+    return false
   end
 
 

@@ -69,7 +69,8 @@
         <p> Average rating: <%= $average.to_f %></p>
       <% end %>
     <% end %>
-
+    <% if logged_in? %>
+    <% if (current_user.id == @event.user_id) || guest?%>
     <p>
         <strong>Event Chat:</strong>
         <div class="row">
@@ -79,6 +80,8 @@
          </div>
         </div>
     </p>
+    <% end %>
+    <% end %>
       <!-- Chatbox for users -->
       <!-- show chat if it's host or user RSVP to event -->
 

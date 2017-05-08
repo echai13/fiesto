@@ -431,6 +431,7 @@ div.tab button:hover {
 div.tab button.active {
     background-color: #fffb1c;
     color: black;
+    z-index: 5;
 }
 
 /* Style the tab content */
