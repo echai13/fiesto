@@ -52,8 +52,8 @@
 
     <div class="col-md-12 all-events">
         <div class="tab">
-            <button class="tablinks" onclick="load(event, 'near_div')">Nearby Parties</button>
-            <button class="tablinks" onclick="load(event, 'host_div')" id="defaultOpen">My Parties</button>
+            <button class="tablinks" onclick="load(event, 'near_div')", id="defaultOpen">Nearby Parties</button>
+            <button class="tablinks" onclick="load(event, 'host_div')">My Parties</button>
             <button class="tablinks" onclick="load(event, 'all_div')">All Parties</button>
             <% if @heat && logged_in?%>
             <%= button_to 'Expand Radius', '/expand', :method => :post, :class => 'tablinks'%>
