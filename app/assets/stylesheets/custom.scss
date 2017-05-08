@@ -25,7 +25,6 @@
 body {
     padding-top: 60px;
     margin-bottom: 100px;
-    background-color: #f2e6ff !important;
 }
 
 section {
@@ -76,19 +75,14 @@ p {
 /* header */
 /* navbar */
 .navbar {
-  background: #330033; /* For browsers that do not support gradients */
-  border-bottom: none;
-}
-
-.navbar-right li {
-  color: #ff751a !important;
+    background-color: white;
 }
 
 #logo {
     float: left;
     margin-right: 10px;
     font-size: 1.7em;
-    color: #ff751a;
+    color: red;
     text-transform: uppercase;
     letter-spacing: -1px;
     padding-top: 9px;
@@ -99,34 +93,39 @@ p {
     color: yellow;
     text-decoration: none;
 }
-
-nav li a:hover {
-  color: yellow !important;
-  text-decoration: none;
-}
 /* footer */
 
 footer {
-    position: relative;
+    position: fixed;
     height: 4%;
     width: 100%;
     left: 0;
     bottom: 10px;
     color: #777;
-    background-image: url('/assets/images/footer.jpg');
-    background-size: 50% 50%;
+    background-color: #4d004d;
+    border-top-left-radius: 30% 80%;
+    border-top-right-radius: 30% 80%;
+    z-index: 5;
+    border-top:2px solid #b7af98;
 }
 
 footer a {
-    color: #555;
+    color: #FFFFFF;
 }
 
 footer a:hover {
-    color: #222;
+    color: #fffbb7;
 }
 
 footer small {
     float: left;
+    margin-left: 20%;
+    font-size: 1.5em;
+}
+
+footer nav{
+    margin-right :20%;
+    font-size: 1.5em;
 }
 
 footer ul {
@@ -141,13 +140,13 @@ footer ul li {
 /* sidebar */
 .user_info {
     margin-top: 20px;
-    float:left;
+    text-align: center;
 }
 
 .gravatar {
   margin-top: 20px;
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 150px;
 }
 
 .gravatar_edit {
@@ -243,8 +242,6 @@ img {
     text-align: center;
     position: relative;
     margin-top: 100px;
-    margin-bottom: 150px;
-    width: 100%;
 }
 
 .color-box {
@@ -296,7 +293,7 @@ img {
 }
 
 .new-button {
-  background-color: #4d004d;
+  background-color: blue;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -314,32 +311,32 @@ img {
 }
 
 #hat-icon {
-  margin-top: 17px;
-  margin-left: -10px;
+  margin-top: 8px;
+  margin-left: -5px;
 }
 
 #myCarousel {
   position: relative;
-  width: 65%;
+  width: 50%;
   float:left;
 }
 
 .carousel-text {
   position: relative;
   float:left;
-  font-size: 28px;
-  width: 35%;
+  font-size: 32px;
+  width: 50%;
   word-wrap: break-word;
 }
 
 .text-pos {
   margin-left: 30px;
-  margin-top: 50px;
+  margin-top: 20px;
   display: inline-block;
 }
 
 .font-orange {
-  color: #ff751a;
+  color: red;
 }
 
 .host-party {
@@ -363,18 +360,22 @@ img {
 }
 
 .outer-form {
-  margin-top: -50px;
-  background-color: #330033;
+  background-color: #ff9999;
   width: 800px;
   height: 800px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 25px;
-  color: #ff751a;
 }
 
 .top-section {
   margin-top: 50px;
+}
+
+.parties-section {
+  background-color: LightCoral;
+  margin-top: 300px;
+  height: 100%;
+  padding-bottom: 300px;
 }
 
 .form-group .form-control2 {
@@ -390,8 +391,7 @@ img {
 div.tab {
     overflow: hidden;
     border: 1px solid #ccc;
-    background-color: #330033;
-    color: orange;
+    background-color: #f1f1f1;
 }
 
 /* Style the buttons inside the tab */
@@ -446,53 +446,4 @@ div.tab button.active {
 #offender-icon {
   height: 60px;
   width: 50px;
-}
-
-.home-section {
-  position: relative;
-  background-color: #330033 !important;
-  margin-top: 70px;
-  margin-bottom: 50px;
-  height: 500px;
-  width: 100%;
-  h1 {
-    text-align: center;
-    color: #ff751a;
-  }
-}
-
-.user-events {
-  position: relative;
-  float:left;
-}
-
-.heading {
-  text-align: center;
-}
-
-.about-us {
-  border: solid 2px;
-  margin: 2px;
-  text-align: center;
-}
-
-.new-button-2 {
-  background-color: #ff751a;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  width: auto;
-  min-height: 8px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  margin: 8px 2px;
-  cursor: pointer;
-  position: relative;
-  bottom: 0;
-  margin-right: auto;
-  margin-left: 45%;
-  a :hover {
-    text-decoration: none;
-  }
 }

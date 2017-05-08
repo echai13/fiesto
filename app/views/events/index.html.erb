@@ -1,56 +1,49 @@
 <div class="top-section">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item active">
-        <%= image_tag("party.jpg", size: "900x900") %>
-      </div>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <%= image_tag("party.jpg", size: "700x700") %>
+            </div>
 
-      <div class="item">
-        <%= image_tag("party.jpg", size: "900x900") %>
-      </div>
+            <div class="item">
+                <%= image_tag("party.jpg", size: "700x700") %>
+            </div>
 
-      <div class="item">
-        <%= image_tag("party.jpg", size: "900x900") %>
-      </div>
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-
-  <div class="carousel-text">
-    <div class="text-pos">
-      <span class="animate">
-        <p>Check out the parties that are trending right now.</p>
-        <p class="font-orange">RSVP now.</p>
-        <div id="action-button">
-          <% if logged_in? %>
-          <%= link_to 'Add New Party', new_event_path, class: "new-button" %>
-          <% else %>
-          <%= link_to 'Log In', login_path, method: "get", class: "new-button" %>
-          <% end %>
+            <div class="item">
+                <%= image_tag("party.jpg", size: "700x700") %>
+            </div>
         </div>
-      </span>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
-  </div>
-</div>
 
-
+    <div class="carousel-text">
+        <div class="text-pos">
+            <span class="animate">
+                <p>Check out the parties that are trending right now.</p>
+                <p class="font-orange">RSVP now.</p>
+                <br>
+                <p>Don't miss out on the fun!
+                </span>
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript" src="typeWriter.min.js"></script>
     <script>
@@ -72,133 +65,14 @@
           <div id="all_div" class="tabcontent"><%= render 'all' %></div>
 
     </div>
-  </div>
 
-    <div class="home-section">
-      <div id="action-button">
+    <div id="floater">
         <% if logged_in? %>
-        <h1>Want to plan a party to meet new people?</h1>
-        <%= link_to 'Add New Party', new_event_path, class: "new-button-2" %>
-        <% else %>
-        <h1>What are you waiting for? Sign up now!</h1>
-        <%= link_to 'Sign Up', signup_path, method: "get", class: "new-button" %>
+        <%= link_to 'New Party', new_event_path, class: "new_event_button" %>
+    <% else %>
+        <%= link_to 'Log In', login_path, method: "get", class: "new_event_button" %>
         <% end %>
-      </div>
     </div>
 
-    <script type="text/javascript">
-
-/***********************************************
-* Conveyor belt slideshow script- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
-* Please keep this notice intact
-* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
-***********************************************/
-
-
-//Specify the slider's width (in pixels)
-var sliderwidth="1410px"
-//Specify the slider's height
-var sliderheight="500px"
-//Specify the slider's slide speed (larger is faster 1-10)
-var slidespeed=7
-//configure background color:
-slidebgcolor="#f2e6ff"
-
-//Specify the slider's images
-<% Party %>
-var leftrightslide=new Array()
-var finalslide=''
-leftrightslide[0]= '<%= link_to image_tag("party.jpg", size: '600x400')%>'
-leftrightslide[1]= '<%= link_to image_tag("gathering.jpg", size: '600x400')%>'
-leftrightslide[2]= '<%= link_to image_tag("party.jpg", size: '600x400')%>'
-leftrightslide[3]= '<%= link_to image_tag("gathering.jpg", size: '600x400')%>'
-leftrightslide[4]= '<%= link_to image_tag("gathering.jpg", size: '600x400')%>'
-
-//Specify gap between each image (use HTML):
-var imagegap=" "
-
-//Specify pixels gap between each slideshow rotation (use integer):
-var slideshowgap=10
-
-
-////NO NEED TO EDIT BELOW THIS LINE////////////
-
-var copyspeed=slidespeed
-leftrightslide='<nobr>'+leftrightslide.join(imagegap)+'</nobr>'
-var iedom=document.all||document.getElementById
-if (iedom)
-document.write('<span id="temp" style="visibility:hidden;position:absolute;top:-100px;left:-9000px">'+leftrightslide+'</span>')
-var actualwidth=''
-var cross_slide, ns_slide
-
-function fillup(){
-if (iedom){
-cross_slide=document.getElementById? document.getElementById("test2") : document.all.test2
-cross_slide2=document.getElementById? document.getElementById("test3") : document.all.test3
-cross_slide.innerHTML=cross_slide2.innerHTML=leftrightslide
-actualwidth=document.all? cross_slide.offsetWidth : document.getElementById("temp").offsetWidth
-cross_slide2.style.left=actualwidth+slideshowgap+"px"
-}
-else if (document.layers){
-ns_slide=document.ns_slidemenu.document.ns_slidemenu2
-ns_slide2=document.ns_slidemenu.document.ns_slidemenu3
-ns_slide.document.write(leftrightslide)
-ns_slide.document.close()
-actualwidth=ns_slide.document.width
-ns_slide2.left=actualwidth+slideshowgap
-ns_slide2.document.write(leftrightslide)
-ns_slide2.document.close()
-}
-lefttime=setInterval("slideleft()",30)
-}
-window.onload=fillup
-
-function slideleft(){
-if (iedom){
-if (parseInt(cross_slide.style.left)>(actualwidth*(-1)+8))
-cross_slide.style.left=parseInt(cross_slide.style.left)-copyspeed+"px"
-else
-cross_slide.style.left=parseInt(cross_slide2.style.left)+actualwidth+slideshowgap+"px"
-
-if (parseInt(cross_slide2.style.left)>(actualwidth*(-1)+8))
-cross_slide2.style.left=parseInt(cross_slide2.style.left)-copyspeed+"px"
-else
-cross_slide2.style.left=parseInt(cross_slide.style.left)+actualwidth+slideshowgap+"px"
-
-}
-else if (document.layers){
-if (ns_slide.left>(actualwidth*(-1)+8))
-ns_slide.left-=copyspeed
-else
-ns_slide.left=ns_slide2.left+actualwidth+slideshowgap
-
-if (ns_slide2.left>(actualwidth*(-1)+8))
-ns_slide2.left-=copyspeed
-else
-ns_slide2.left=ns_slide.left+actualwidth+slideshowgap
-}
-}
-
-
-if (iedom||document.layers){
-with (document){
-document.write('<table border="0" cellspacing="0" cellpadding="0"><td>')
-if (iedom){
-write('<div style="position:relative;width:'+sliderwidth+';height:'+sliderheight+';overflow:hidden">')
-write('<div style="position:absolute;width:'+sliderwidth+';height:'+sliderheight+';background-color:'+slidebgcolor+'" onMouseover="copyspeed=0" onMouseout="copyspeed=slidespeed">')
-write('<div id="test2" style="position:absolute;left:0px;top:0px"></div>')
-write('<div id="test3" style="position:absolute;left:-1000px;top:0px"></div>')
-write('</div></div>')
-}
-else if (document.layers){
-write('<ilayer width='+sliderwidth+' height='+sliderheight+' name="ns_slidemenu" bgColor='+slidebgcolor+'>')
-write('<layer name="ns_slidemenu2" left=0 top=0 onMouseover="copyspeed=0" onMouseout="copyspeed=slidespeed"></layer>')
-write('<layer name="ns_slidemenu3" left=0 top=0 onMouseover="copyspeed=0" onMouseout="copyspeed=slidespeed"></layer>')
-write('</ilayer>')
-}
-document.write('</td></table>')
-}
-}
-</script>
 
 <%= javascript_include_tag "event_render" %>
