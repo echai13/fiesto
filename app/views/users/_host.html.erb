@@ -1,7 +1,7 @@
 <div class="col-md-12 all-events">
   <% Event.all.each do |event| %>
     <% if event.user_id == current_user.id %>
-      <div class="color-box">
+      <div class="color-box" data-turbolinks="false">
       <p><%= link_to "#{image_tag Event.find(event.id).avatar.url(:thumb)}".html_safe, Event.find(event.id) %></p>
       <p><%= link_to Event.name_by_id(event.id).first.name, Event.find(event.id) %></p>
       <p><%= link_to 'Delete', { action: "drop" }, data: { confirm: 'Are you sure?' }, :method => :post %></p>
