@@ -10,10 +10,12 @@
   <%= image_tag @event.avatar.url(:large) %>
 </p>
 
+
 <p>
   <strong>Name:</strong>
-  <%= @event.name %>
+  <div id='chat_name'><%= @event.name %></div>
 </p>
+
 
 <p>
   <strong>Date:</strong>
