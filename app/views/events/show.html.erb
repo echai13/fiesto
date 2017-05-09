@@ -39,7 +39,7 @@
                         On
                         <%= Date.strptime(@event.date, "%m/%d/%Y") %>
                         at
-                        <%= @event.time.strftime("%I:%M%p") %>
+                        <%= @event.time.to_time.strftime("%I:%M%p") %>
                     </small>
                 </h2>
                 <strong>Price:</strong>

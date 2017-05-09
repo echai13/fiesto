@@ -7,7 +7,6 @@ class Event < ApplicationRecord
   attr_accessor :routing, :account
 
   validates :name, presence: true, length: { maximum: 50 }
-  validates :date, presence: true
   validates :location, presence: true
   validates :time, presence: true
 

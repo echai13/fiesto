@@ -123,9 +123,10 @@ def verify_check
 
   puts "city #{params[:address_city]}"
   person = BlockScore::Person.create(
-    birth_day: current_user.dob.strftime("%d"),
-    birth_month: current_user.dob.strftime("%m"),
-    birth_year: current_user.dob.strftime("%Y"),
+    new_dob = Date.strptime(current_user.dob, "%m/%d/%Y")
+    birth_day: new_dob.strftime("%d"),
+    birth_month: new_dob.strftime("%m"),
+    birth_year: new_dob.strftime("%Y"),
     document_type: 'ssn',
     document_value: '0000',
     name_first: current_user.first_name,
@@ -148,7 +149,7 @@ end
 
  private
     def user_params
-     params.require(:user).permit(:username, :email, :password, :bio, 
+     params.require(:user).permit(:username, :email, :password, :bio,
                                   :password_confirmation, :radius, :first_name, :last_name, :dob, :passcode)
    end
 
