@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(@user) do |f| %>
+<!-- <%= bootstrap_form_for(@user) do |f| %>
   <%= render 'shared/error_messages', object: @user %>
 
   <%= f.text_field :username, class: 'form-control' %>
@@ -13,3 +13,69 @@
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
+
+ -->
+
+ <body>
+   <div class="signup-wrap">
+ 	<div class="signup-html">
+ 		<input id="tab-1" type="radio" name="tab" class="sign-in"><label for="tab-1" class="tab"></label>
+    <% if logged_in? %>
+    <input id="tab-2" type="radio" name="tab" class="sign-up" checked><label for="tab-2" class="tab">Edit Profile</label>
+    <% else %>
+ 		 <input id="tab-2" type="radio" name="tab" class="sign-up" checked><label for="tab-2" class="tab">Sign Up</label>
+    <% end %>
+    <div class="signup-form">
+ 			<div class="sign-up-htm">
+        <%= form_for(@user) do |f| %>
+ 				<div class="group">
+ 					<label for="user" class="label">Username</label>
+          <%= f.text_field :username, class: 'input' %>
+ 				</div>
+        <div class="group">
+ 					<label for="user" class="label">First Name</label>
+          <%= f.text_field :first_name, class: 'input' %>
+ 				</div>
+        <div class="group">
+ 					<label for="user" class="label">Last Name</label>
+          <%= f.text_field :last_name, class: 'input' %>
+ 				</div>
+        <div class="group">
+ 					<label for="user" class="label">Date Of Birth</label>
+          <%= f.date_select :dob, class: 'input'%>
+ 				</div>
+        <div class="group">
+ 					<label for="user" class="label">Email Address</label>
+          <%= f.email_field :email, class: 'input' %>
+ 				</div>
+ 				<div class="group">
+ 					<label for="pass" class="label">Password</label>
+ 					  <%= f.password_field :password, class: 'input' %>
+ 				</div>
+ 				<div class="group">
+ 					<label for="pass" class="label">Password Confirmation</label>
+          <%= f.password_field :password_confirmation, class: 'input' %>
+ 				</div>
+        <div class="group">
+ 					<label for="pass" class="label">Search Radius</label>
+          <%= f.number_field :radius, class: 'input' %>
+ 				</div>
+ 				<div class="group">
+ 					<label for="pass" class="label">Passcode</label>
+          <%= f.number_field :passcode, class: 'input' %>
+ 				</div>
+ 				<div class="group">
+          <%= f.submit yield(:button_text), class: "button" %>
+ 				</div>
+ 				<div class="hr"></div>
+ 				<div class="foot-lnk">
+ 					<%= link_to "Already a member? Log in!", login_path, id: "make_white"%>
+ 				</div>
+        <% end %>
+ 			</div>
+ 		</div>
+ 	</div>
+ </div>
+
+
+ </body>
