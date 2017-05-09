@@ -58,7 +58,7 @@
 
     <div id="floater">
         <% if logged_in? %>
-        <%= link_to 'New Party', new_event_path, class: "new_event_button" %>
+        <%= link_to 'New Party', new_event_path, class: "new_event_button"%>
     <% else %>
         <%= link_to 'Log In', login_path, method: "get", class: "new_event_button" %>
         <% end %>

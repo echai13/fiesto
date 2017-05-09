@@ -1,4 +1,5 @@
 <!-- shows an individual event -->
+<%= include_gon %>
 <div class = "col-sm-9">
 <%= render 'event_details' %>
 <% if logged_in? %>
@@ -54,7 +55,7 @@
 
     <!-- Rating and comments for party -->
     <!---if event has already passed? -->
-    <% if @event.time < Time.now && @event.date < DateTime.now %>
+    <% if @event.time < Time.now && Date.strptime(@event.date, "%m/%d/%Y") < DateTime.now %>
       <h3>Reviews for party</h3>
       <% Party.all.each do |party| %>
         <% if party.event_id == @event.id && !party.rating.nil?%>

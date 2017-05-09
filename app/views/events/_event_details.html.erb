@@ -19,7 +19,7 @@
 
 <p>
   <strong>Date:</strong>
-  <%= @event.date %>
+  <%= Date.strptime(@event.date, "%m/%d/%Y") %>
 </p>
 
 <p>

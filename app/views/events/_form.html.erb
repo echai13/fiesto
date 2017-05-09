@@ -19,7 +19,7 @@
   <div class="field">
     <label for="field1">
     <span>Party Name</span>
-    <%= f.text_field :name,type:"text",name: "field1"%>
+    <%= f.text_field :name%>
   </label>
   </div>
 
@@ -58,13 +58,14 @@
     </label>
   </div>
 
+
   <div class="actions" type="button">
     <%= f.submit %>
   </div>
 <% end %>
 
 <script>
-$(document).ready(function(){
-$('.timepicker').timepicker();
+$(document).ready(function() {
+$('#event_time').timepicker();
 });
 </script>

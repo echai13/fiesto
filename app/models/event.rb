@@ -7,6 +7,9 @@ class Event < ApplicationRecord
   attr_accessor :routing, :account
 
   validates :name, presence: true, length: { maximum: 50 }
+  validates :date, presence: true
+  validates :location, presence: true
+  validates :time, presence: true
 
   # This method associates the attribute ":avatar" with a file attachment
   has_attached_file :avatar, :styles => {
