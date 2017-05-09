@@ -13,7 +13,7 @@
           <% if @user.offender %>
           <%= image_tag 'offender-icon.png', id: 'offender-icon' %>
           <% end %>
-          <% if !@user.offender %>
+          <% if @user.offender == FALSE %>
           <%= image_tag('safe-icon.png', id: 'safe-icon') %>
           <% end %>
         </h1>
