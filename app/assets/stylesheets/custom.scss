@@ -258,10 +258,13 @@ img {
 }
 
 .color-box {
-    background: rgba(255, 255, 255, 0.5);
-    height: 280px;
+    background: rgba(255, 255, 255,.75);
+    height: 350px;
     width: 350px;
     float: left;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin: 2px;
 }
 
 .new-event {

@@ -1,8 +1,11 @@
 <div class="col-md-12 all-events">
     <% Event.all.each do |event| %>
         <div class="color-box" data-turbolinks="false">
-            <p><%= link_to "#{image_tag event.avatar.url(:thumb)}".html_safe, event %></p>
-            <p><%= link_to "#{event.name}", event %></p>
+          <p><%= link_to "#{image_tag event.avatar.url(:thumb)}".html_safe, event %></p>
+          <p class="partyname"><strong><%= link_to "#{event.name}", event %></strong></p>
+          <p><%= link_to "#{event.location}", event %></p>
+          <p><%= link_to "#{event.date}", event %></p>
+          <p><%= link_to "#{number_to_currency(event.price)}", event %></p>
         </div>
     <% end %>
 </div>

@@ -236,7 +236,7 @@
 
 body {
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-    background: image-url('party.jpg') no-repeat center center fixed;
+    background: image-url('bg.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -399,4 +399,8 @@ th{
 td {
 	padding: 10px 0;
 	width: 30%;
+}
+
+.partyname{
+	font-size:2em;
 }

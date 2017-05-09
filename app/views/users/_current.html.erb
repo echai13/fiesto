@@ -1,15 +1,19 @@
 <div class="col-md-12 all-events">
     <% Party.all.each do |party| %>
     <% if party.user_id == @user.id %>
+        <% @event = Event.find(party.event_id) %>
         <div class="color-box" data-turbolinks="false">
-        <p><%= link_to "#{image_tag Event.find(party.event_id).avatar.url(:thumb)}".html_safe, Event.find(party.event_id) %></p>
-        <p><%= link_to Event.name_by_id(party.event_id).first.name, Event.find(party.event_id) %></p>
+        <p><%= link_to "#{image_tag Event.find(party.event_id).avatar.url(:thumb)}".html_safe, @event %></p>
+        <p class="partyname"><strong><%= link_to Event.name_by_id(party.event_id).first.name, @event %></strong></p>
+        <p><%= link_to "#{@event.location}", @event %></p>
+        <p><%= link_to "#{@event.date}", @event %></p>
+        <p><%= link_to "#{number_to_currency(@event.price)}", @event %></p>
         <p><%= link_to 'Delete', { action: "drop", id: party.event_id }, data: { confirm: 'Are you sure?' }, :method => :post %></p>
 
 
         <!--if event has passed, option to rate/comment -->
         <% @event = Event.find_by_party(party.event_id) %>
-        <% if @event.time < Time.now && @event.date < DateTime.now %>
+        <% if @event.time < Time.now && Date.strptime(@event.date, "%m/%d/%Y") < DateTime.now %>
           <%= form_tag parties_path(:user_id => party.user_id, :event_id => party.event_id) do %>
 
           <div class="field">
