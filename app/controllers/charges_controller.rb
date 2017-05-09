@@ -5,7 +5,6 @@ class ChargesController < ApplicationController
   $amount
   $account_id
 
-
   def new
   end
 
@@ -38,9 +37,7 @@ def create
       @current_party = Party.find_by_id(params[:party_id])
       @current_party.attended = TRUE
       @current_party.save
-      flash[:success] = "You have successfully joined the Guest List!"
-      redirect_to current_user
-
+      
 
   elsif !current_user.card_avail #just add card to Stripe without charging
     customer = Stripe::Customer.retrieve(current_user.customer_id)
