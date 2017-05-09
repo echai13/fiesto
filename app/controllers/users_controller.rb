@@ -122,8 +122,8 @@ def verify_check
   BlockScore.api_key = 'sk_test_c09ab82974083e676772876a24482e00'
 
   puts "city #{params[:address_city]}"
+  new_dob = Date.strptime(current_user.dob, "%m/%d/%Y")
   person = BlockScore::Person.create(
-    new_dob = Date.strptime(current_user.dob, "%m/%d/%Y")
     birth_day: new_dob.strftime("%d"),
     birth_month: new_dob.strftime("%m"),
     birth_year: new_dob.strftime("%Y"),
