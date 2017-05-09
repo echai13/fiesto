@@ -72,10 +72,12 @@ class EventsController < ApplicationController
     @current = User.find_by id: session[:user_id]
     @event.user_id = @current.id
 
+    puts params[:routing]
+
     if params[:routing].present? && params[:account].present?
       @date = Date.strptime(current_user.dob, "%m/%d/%Y")
       puts "enter"
-      Stripe.api_key = "sk_test_e3a2WOvBkQpgRrufKzprhHhn"
+      Stripe.api_key = Rails.application.secrets.STRIPE_SECRET_KEY
 
       acct = Stripe::Account.create(
       {

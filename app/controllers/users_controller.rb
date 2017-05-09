@@ -58,7 +58,7 @@ class UsersController < ApplicationController
    @user = User.new(user_params)
    if @user.save
      @user.update_attribute(:radius, 5)
-     Stripe.api_key = "sk_test_e3a2WOvBkQpgRrufKzprhHhn"
+     Stripe.api_key = Rails.application.secrets.STRIPE_SECRET_KEY
      customer = Stripe::Customer.create(email: @user.email)
      @user.update_attribute(:customer_id, customer.id)
      @user.update_attribute(:verify, FALSE)
