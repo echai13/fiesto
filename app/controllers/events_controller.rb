@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    location_info = request.location
+    #location_info = request.location
     #retrieves data if logged on
     @heat = FALSE
     if current_user != nil
@@ -14,12 +14,18 @@ class EventsController < ApplicationController
         current_user.radius = 5
       end
       #search based on search radius
+      # @my_events = Event.user_deletion(current_user.id)
+      # @events = Event.near([location_info.latitude, location_info.longitude], current_user.radius)
+      # current_user.update(:latitude => location_info.latitude)
+      # current_user.update(:longitude => location_info.longitude)
+      #   new_radius = current_user.radius + 2
+      # @heat_zone = Event.near([location_info.latitude, location_info.longitude], new_radius)
       @my_events = Event.user_deletion(current_user.id)
-      @events = Event.near([location_info.latitude, location_info.longitude], current_user.radius)
-      current_user.update(:latitude => location_info.latitude)
-      current_user.update(:longitude => location_info.longitude)
+      @events = Event.near([42.3647, 71.2588], current_user.radius)
+      current_user.update(:latitude => 42.3647)
+      current_user.update(:longitude => 71.2588)
         new_radius = current_user.radius + 2
-      @heat_zone = Event.near([location_info.latitude, location_info.longitude], new_radius)
+      @heat_zone = Event.near([42.3647, 71.2588], new_radius)
       if @heat_zone != nil
         if @heat_zone.count(:all) - @events.count(:all) > 2
           @heat = TRUE
