@@ -4,6 +4,7 @@ class Event < ApplicationRecord
   belongs_to :user
   geocoded_by :location   # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates
+  attr_accessor :routing, :account
 
   validates :name, presence: true, length: { maximum: 50 }
 

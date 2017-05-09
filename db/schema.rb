@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506192138) do
+ActiveRecord::Schema.define(version: 20170509041415) do
 
   create_table "charges", force: :cascade do |t|
     t.string   "email"
@@ -33,8 +33,6 @@ ActiveRecord::Schema.define(version: 20170506192138) do
     t.datetime "avatar_updated_at"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "routing"
-    t.string   "account"
     t.decimal  "price",               precision: 10, scale: 2
     t.integer  "attendees"
     t.index ["user_id"], name: "index_events_on_user_id"
@@ -70,7 +68,7 @@ ActiveRecord::Schema.define(version: 20170506192138) do
     t.integer  "radius"
     t.boolean  "card_avail"
     t.integer  "passcode"
-    t.string   "dob"
+    t.date     "dob"
     t.boolean  "verify"
     t.boolean  "offender"
   end

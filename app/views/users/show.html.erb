@@ -1,16 +1,45 @@
 <% provide(:title, @user.username) %>
-    <div class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.username %>
-        <% if @user.offender %>
-          <%= image_tag 'offender-icon.png', id: 'offender-icon' %>
-        <% else %>
-          <%= image_tag('safe-icon.png', id: 'safe-icon') %>
-        <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-8">
 
-      </h1>
+      <div class="col-md-4">
+        <%= gravatar_for @user %>
+      </div>
+
+      <div class="col-md-8 user-info">
+        <h1>
+          <%= @user.username %>
+          <% if @user.offender %>
+          <%= image_tag 'offender-icon.png', id: 'offender-icon' %>
+          <% end %>
+          <% if !@user.offender %>
+          <%= image_tag('safe-icon.png', id: 'safe-icon') %>
+          <% end %>
+        </h1>
+        <div class="user-bio">
+          <% if @user.bio.nil? %>
+          Add a bio under <%= link_to 'Settings', edit_user_path(current_user) %>
+          <% else %>
+          <p><%= @user.bio %></p>
+
+          <!-- <p>"I love tacos!"</p>
+          <p> 21-year old college student from New York and attending college in Boston. Gonna be graduating this year so hit me up with parties!</p> -->
+          <% end %>
+        </div>
+      </div>
     </div>
+
+    <div class="col-xs-6 col-md-4">
+      <div class="party-stat-group">
+        <h4>Parties RSVP</h4>
+        <p class="party-stat"><%= Party.where(:user_id => @user.id).count %></p>
+        <h4>Parties Hosted</h4>
+        <p class="party-stat"><%= Event.where(:user_id => @user.id).count %></p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!--- sex offend check yet? -->
 <% if @user.verify && @user.offender.nil? %>

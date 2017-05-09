@@ -150,20 +150,25 @@ footer ul li {
     margin-left: 15px;
 }
 /* sidebar */
-.user_info {
-    margin-top: 20px;
-    text-align: center;
+.user-info {
+  margin-top: -110px;
 }
 
 .gravatar {
   margin-top: 20px;
-  height: 70px;
-  width: 70px;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.col-md-8 h1 {
+  text-align: left;
 }
 
 .gravatar_edit {
     margin-top: 15px;
 }
+
 /* forms */
 $gray-medium-light: #eaeaea;
 @mixin box_sizing {
@@ -468,4 +473,19 @@ div.tab button.active {
 #offender-icon {
   height: 60px;
   width: 50px;
+}
+
+.user-bio {
+  margin-top: -130px;
+}
+
+.party-stat {
+  margin-top: -35px;
+  font-size: 24px;
+}
+
+.party-stat-group {
+  margin-top: -20px;
+  margin-left: 100px;
+  text-align: right;
 }
