@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170509041415) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
-    t.date     "date"
+    t.string   "date"
     t.time     "time"
     t.string   "location"
     t.integer  "user_id"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20170509041415) do
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
-    t.string   "bio"
+    t.text     "bio"
     t.string   "first_name"
     t.string   "last_name"
     t.datetime "created_at",                      null: false
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20170509041415) do
     t.integer  "radius"
     t.boolean  "card_avail"
     t.integer  "passcode"
-    t.date     "dob"
+    t.string   "dob"
     t.boolean  "verify"
     t.boolean  "offender"
   end

@@ -1,3 +1,7 @@
+<% if current_user.card_avail %>
+  Thank you for your RSVP. You will be charged when you attend.
+<% else %>
+
 <%= form_tag charges_path do %>
   <article>
     <% if flash[:error].present? %>
@@ -16,6 +20,6 @@
           data-description="Event fee payment"
           data-amount="<%= $amount %>"
           data-locale="auto"
-          data-zip-code="true">
-  </script>
+          data-zip-code="true"></script>
+<% end %>
 <% end %>
