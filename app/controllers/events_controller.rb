@@ -72,8 +72,7 @@ class EventsController < ApplicationController
     @current = User.find_by id: session[:user_id]
     @event.user_id = @current.id
 
-    puts @event.routing
-    if @event.routing.present? && @event.account.present?
+    if params[:routing].present? && params[:account].present?
       @date = Date.strptime(current_user.dob, "%m/%d/%Y")
       puts "enter"
       Stripe.api_key = "sk_test_e3a2WOvBkQpgRrufKzprhHhn"
@@ -86,8 +85,8 @@ class EventsController < ApplicationController
           :object => 'bank_account',
           :country => 'US',
           :currency => 'usd',
-          :routing_number => @event.routing,
-          :account_number => @event.account,
+          :routing_number => params[:routing],
+          :account_number => params[:account],
         }
       }
       )
