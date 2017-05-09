@@ -28,10 +28,14 @@ $(document).on('turbolinks:load', function () {
   }
 
   function success(position) {
+    var now = new Date();
+    var time = now.getTime();
+    var expireTime = time + 1000*600;
+    now.setTime(expireTime);
     var latitude  = position.coords.latitude;
     var longitude = position.coords.longitude;
-    document.cookie = "latitude=" + latitude;
-    document.cookie = "longitude=" + longitude;
+    document.cookie = "latitude=" + latitude + ";expires="+now.toGMTString()+';path=/';
+    document.cookie = "longitude=" + longitude + ";expires="+now.toGMTString()+';path=/';
     console.log('done');
   }
 

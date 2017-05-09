@@ -8,6 +8,11 @@ class EventsController < ApplicationController
   def index
     latitude = cookies["latitude"]
     longitude = cookies["longitude"]
+    #set default lat long to brandeis if cookies doesn't have it
+    if latitude == nil || longitude == nil
+      latitude = 42.3647
+      longitude = -71.2588
+    end
     @heat = FALSE
     if current_user != nil
       if current_user.radius == nil
