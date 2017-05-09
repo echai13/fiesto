@@ -1,3 +1,8 @@
+<div id="details">
+<div><%= image_tag @event.avatar.url(:large), id: "event_image"%> <div id='chat_name'><%= @event.name %></div></h1></div>
+<br>
+<br>
+
 <p>
   <strong>Host:</strong>
   <% @host = User.find_by id: @event.user_id %>
@@ -7,13 +12,13 @@
 <p>
   <strong>Event Picture:</strong>
   <br>
-  <%= image_tag @event.avatar.url(:large) %>
+
 </p>
 
 
 <p>
   <strong>Name:</strong>
-  <div id='chat_name'><%= @event.name %></div>
+
 </p>
 
 
@@ -40,3 +45,4 @@
   </div>
 </p>
 <% end %>
+</div>

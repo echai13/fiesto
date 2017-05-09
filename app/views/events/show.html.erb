@@ -1,110 +1,175 @@
-<!-- shows an individual event -->
 <%= include_gon %>
-<div class = "col-sm-9">
-<%= render 'event_details' %>
-<% if logged_in? %>
-<!--- guest check-in & charge-->
-  <table>
-    <thead>
-      <tr>
-        <th>Guest Name</th>
-        <th>Password</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @party.each do |party| %>
-      <% if party.event_id == @event.id %>
-      <tr>
-        <!--- traverse through each party and list guests and attend button to charge -->
-        <td>
-          <% if logged_in? && @event.user_id == current_user.id%>
-          <%= link_to User.name_by_id(party.user_id).first.username, User.find(party.user_id) %>
-          <% else %>
-          <%= User.name_by_id(party.user_id).first.username %>
-          <% end %>
-        </td>
-        <% if @event.user_id == current_user.id %>
-        <td>
-          <% if Party.find_by_id(party.id).attended %>
-            Paid. Attending right now.
-          <% else %>
-          <%= form_tag charges_path(:user_id => party.user_id, :event_price => @event.price.to_f, :event_host => @event.user_id, :id => @event.id, :party_id => party.id) do %>
-          <div class="field">
-            <%= text_field_tag(:enter) %>
-          </div>
-
-        </td>
-        <td>
-          <%= submit_tag("Attend") %>
-          <% end %>
-          <% end %>
-        </td>
-        <% end %>
-        <% end %>
-        <% end %>
-      </tr>
-    </tbody>
-  </table>
-<% end %>
-
-  <% if logged_in? %>
-    <% $average = 0 %>
-    <% $num = 0 %>
-
-    <!-- Rating and comments for party -->
-    <!---if event has already passed? -->
-    <% if @event.time < Time.now && Date.strptime(@event.date, "%m/%d/%Y") < DateTime.now %>
-      <h3>Reviews for party</h3>
-      <% Party.all.each do |party| %>
-        <% if party.event_id == @event.id && !party.rating.nil?%>
-          <% $average = $average + party.rating %>
-          <% $num = $num + 1 %>
-          <p>Rating by <%= User.name_by_id(party.user_id).first.username %>: <%= party.rating %>, Comment: <%= party.comment %></p>
-        <% end %>
-      <% end %>
-      <% if $average != 0 && $num != 0 %>
-        <% $average = $average/$num %>
-        <p> Average rating: <%= $average.to_f %></p>
-      <% end %>
-    <% end %>
-    <% if logged_in? %>
-    <% if (current_user.id == @event.user_id) || guest?%>
-    <p>
-        <strong>Event Chat:</strong>
-        <div class="row">
-         <div class="col-md-8">
-           <div id="messages"></div>
-           <input id="chat-input" class="form-control" type="text" placeholder="say anything"  autofocus />
-         </div>
-        </div>
-    </p>
-    <% end %>
-    <% end %>
-      <!-- Chatbox for users -->
-      <!-- show chat if it's host or user RSVP to event -->
-
-  <% end %>
+<div class="brand">
+    <div id='chat_name'><%= @event.name %></div>
+</div>
+<div class="address-bar">
+    <div id="address">
+        <%= @event.location %>
+    </div>
 </div>
 
+<div class="container">
 
+    <div class="row">
+        <div class="box">
+            <div class="col-lg-12 text-center">
+            <h2>
+                <%= link_to '&larr;'.html_safe, "/", class: "event_text"%>
+                <% if logged_in? && !Party.party_exist(current_user.id, @event.id)%>
+                  <%= link_to 'RSVP', charges_path(:event_id => @event.id, :event_price => @event.price.to_f, :event_host => @event.user_id, :id => @event.id), class: "event_text" %>
+                <% end %>
+                <% if logged_in? && @event.user_id == current_user.id%>
+                  <%= link_to 'Edit', edit_event_path(@event), class: "event_text"%>
+                  <%= link_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure?' }, class: "event_text"%>
+                <% end %>
+</h2>
+                <h2 class="brand-before">
+                    <small>Join</small>
+                </h2>
+                <h1 class="brand-name"><%= image_tag @event.avatar.url(:large), id: "event_image"%></h1>
+                <h2>
+                    <small>Hosted By
+                        <% @host = User.find_by id: @event.user_id %>
+                        <strong><%= @host.username %></strong>
+                    </small>
+                </h2>
+                <h2>
+                    <small>
+                        On
+                        <%= Date.strptime(@event.date, "%m/%d/%Y") %>
+                        at
+                        <%= @event.time.strftime("%I:%M%p") %>
+                    </small>
+                </h2>
+                <strong>Price:</strong>
+                    <%= number_to_currency(@event.price) %>
+            </div>
+        </div>
+    </div>
 
-<div class = "col-sm-3">
-  <p>
-    <strong>Price:</strong>
-    <%= number_to_currency(@event.price) %>
-  </p>
-  <% if logged_in? && @event.user_id == current_user.id%>
-    <%= button_to 'Edit', edit_event_path(@event), :method => :get, :class => 'event-button'%>
-    <%= button_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'event-button'%>
-  <% end %>
+    <div class="row">
+        <div class="box">
+            <div class="col-lg-12">
+                <hr>
+                <h2 class="intro-text text-center">
+                    <strong>Map</strong>
+                </h2>
+                <hr>
+                <hr class="visible-xs">
+                <div id="map"></div>
+            </p>
+        </div>
+    </div>
+</div>
+<% if logged_in? %>
+<div class="row">
+    <div class="box">
+        <div class="col-lg-12">
+            <hr>
+            <h2 class="intro-text text-center">
+                <strong>Guest List</strong>
+            </h2>
+            <hr>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Guest Name</th>
+                        <th>Password</th>
+                        <th colspan="10"></th>
+                    </tr>
+                </thead>
 
-  <% if logged_in? && !Party.party_exist(current_user.id, @event.id)%>
-    <%= link_to 'RSVP', charges_path(:event_id => @event.id, :event_price => @event.price.to_f, :event_host => @event.user_id, :id => @event.id), :class => 'event-button' %>
-  <% end %>
+                <tbody>
+                    <% @party.each do |party| %>
+                    <% if party.event_id == @event.id %>
+                    <tr>
+                        <!--- traverse through each party and list guests and attend button to charge -->
+                        <td>
+                            <% if logged_in? && @event.user_id == current_user.id%>
+                            <%= link_to User.name_by_id(party.user_id).first.username, User.find(party.user_id) %>
+                        <% else %>
+                            <%= User.name_by_id(party.user_id).first.username %>
+                            <% end %>
+                        </td>
+                        <% if @event.user_id == current_user.id %>
+                        <td>
+                            <% if Party.find_by_id(party.id).attended %>
+                            Paid. Attending right now.
+                        <% else %>
+                            <%= form_tag charges_path(:user_id => party.user_id, :event_price => @event.price.to_f, :event_host => @event.user_id, :id => @event.id, :party_id => party.id) do %>
+                            <div class="field">
+                                <%= text_field_tag(:enter) %>
+                            </div>
 
-  <%= button_to 'Back', "/", :class => 'event-button', :method => :get %>
+                        </td>
+                        <td>
+                            <%= submit_tag("Attend") %>
+                            <% end %>
+                            <% end %>
+                        </td>
+                        <% end %>
+                        <% end %>
+                        <% end %>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<% if (current_user.id == @event.user_id) || guest?%>
+<div class="row">
+    <div class="box">
+        <div class="col-lg-12">
+            <hr>
+            <h2 class="intro-text text-center">
+                <strong>Party Chatroom</strong>
+            </h2>
+            <hr>
+            <div id="messages"></div>
+            <input id="chat-input" class="form-control" type="text" placeholder="say anything"/>
+        </div>
+    </div>
+</div>
+<% end %>
+
+<div class="row">
+<div class="box">
+    <div class="col-lg-12">
+        <hr>
+        <h2 class="intro-text text-center">
+            <strong>Reviews</strong>
+        </h2>
+        <hr>
+        <% $average = 0 %>
+        <% $num = 0 %>
+
+        <!-- Rating and comments for party -->
+        <!---if event has already passed? -->
+        <% if @event.time < Time.now && Date.strptime(@event.date, "%m/%d/%Y") < DateTime.now %>
+        <h3>Reviews for party</h3>
+        <% Party.all.each do |party| %>
+        <% if party.event_id == @event.id && !party.rating.nil?%>
+        <% $average = $average + party.rating %>
+        <% $num = $num + 1 %>
+        <p>Rating by
+            <%= User.name_by_id(party.user_id).first.username %>:
+            <%= party.rating %>, Comment:
+            <%= party.comment %></p>
+        <% end %>
+        <% end %>
+        <% if $average != 0 && $num != 0 %>
+        <% $average = $average/$num %>
+        <p>
+            Average rating:
+            <%= $average.to_f %></p>
+        <% end %>
+        <% end %>
+    </div>
+</div>
+</div>
+<% end %>
+
 </div>
 
 <%= javascript_include_tag "map" %>

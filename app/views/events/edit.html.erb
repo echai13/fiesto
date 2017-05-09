@@ -1,6 +1,4 @@
-<h1>Editing Party</h1>
-
 <%= render 'form', event: @event %>
 
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+<%= button_to 'Show', @event , id: "back_button", method: "get"%>
+<%= button_to 'Back', events_path, id: "back_button", method: "get"%>

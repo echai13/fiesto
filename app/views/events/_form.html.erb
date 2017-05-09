@@ -13,7 +13,7 @@
 <%= form_for (event), :html => { :class => "form-style-4" } do |f| %>
 
   <div id="form_header">
-    <h1>Add A New Party!</h1>
+    <h1 id="formtitle">Add A New Party!</h1>
   </div>
 
   <div class="field">
@@ -63,9 +63,3 @@
     <%= f.submit %>
   </div>
 <% end %>
-
-<script>
-$(document).ready(function() {
-$('#event_time').timepicker();
-});
-</script>
