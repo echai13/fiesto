@@ -27,8 +27,8 @@
            <%= select_tag :address_state, options_for_select(us_states), class: 'input'%>
        </div>
        <div class="group">
-         <label for="pass" class="label">Password</label>
-         <%= number_field_tag :address_postal_code, nil, class: 'input' %>
+         <label for="pass" class="label">Postal Code</label>
+         <%= text_field_tag :address_postal_code, nil, class: 'input' %>
        </div>
        <div class="group">
          <%= submit_tag("Verify",:class=>"button", :name=>"submit") %>
