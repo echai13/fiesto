@@ -48,13 +48,21 @@
  					<label for="pass" class="label">Passcode</label>
           <%= f.number_field :passcode, class: 'input' %>
  				</div>
+        <% if logged_in? %>
+        <div class="group">
+ 					<label for="pass" class="label">Biography</label>
+           <%= f.text_area :bio, :rows => "5", class: "input"%>
+ 				</div>
+        <% end %>
  				<div class="group">
           <%= f.submit yield(:button_text), class: "button" %>
  				</div>
+        <% if ! logged_in? %>
  				<div class="hr"></div>
  				<div class="foot-lnk">
  					<%= link_to "Already a member? Log in!", login_path, id: "make_white"%>
  				</div>
+        <% end %>
         <% end %>
  			</div>
  		</div>

@@ -33,8 +33,10 @@
     <%= @event.location %>
   </div>
 </p>
+<%if logged_in? %>
 <p>
   <strong>Map:</strong>
   <div id="map">
   </div>
 </p>
+<% end %>

@@ -1,8 +1,7 @@
 <!-- shows an individual event -->
-<%= include_gon %>
 <div class = "col-sm-9">
 <%= render 'event_details' %>
-
+<% if logged_in? %>
 <!--- guest check-in & charge-->
   <table>
     <thead>
@@ -47,7 +46,7 @@
       </tr>
     </tbody>
   </table>
-
+<% end %>
 
   <% if logged_in? %>
     <% $average = 0 %>
