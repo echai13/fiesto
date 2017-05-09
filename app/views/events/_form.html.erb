@@ -1,49 +1,70 @@
-<%= bootstrap_form_for(event) do |f| %>
-  <% if event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+<% if event.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-      <ul>
-      <% event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <ul>
+    <% event.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
-<div class="outer-form">
-<div class="form-styling">
-  <div class="field">
-    <%= f.text_field :name,label: "Name of Party"%>
+<%= form_for (event), :html => { :class => "form-style-4" } do |f| %>
+
+  <div id="form_header">
+    <h1>Add A New Party!</h1>
   </div>
 
   <div class="field">
-    <%= f.date_select :date, label: "Date"%>
+    <label for="field1">
+    <span>Party Name</span>
+    <%= f.text_field :name,type:"text",name: "field1"%>
+  </label>
   </div>
 
   <div class="field">
-      <%= f.time_select :time, {minute_step: 5}, label: "Time"%>
+    <label for="field1">
+    <span>Date</span>
+    <%= f.text_field :date, :data => {:provide => "datepicker"}%>
+    </label>
   </div>
 
   <div class="field">
-    <%= f.text_field :location, label: "Location"%>
+    <label for="field1">
+    <span>Time</span>
+      <%= f.text_field :time, class: "timepicker"%>
+    </label>
   </div>
 
   <div class="field">
+    <label for="field1">
+    <span>Location</span>
+    <%= f.text_field :location%>
+    </label>
+  </div>
+
+  <div class="field">
+    <label for="field1">
+    <span>Price</span>
     <%= f.number_field :price, :step => 0.01 %>
+    </label>
   </div>
 
   <div class="field">
+    <label for="field1">
+    <span>Image</span>
     <%= f.file_field :avatar, label: "Event Picture"%>
+    </label>
   </div>
 
-  <% if current_user.account_id.nil? %>
-    <%= render 'bank_account', f: f %>
-  <% end %>
-
-  <div class="actions">
+  <div class="actions" type="button">
     <%= f.submit %>
   </div>
-</div>
-</div>
 <% end %>
+
+<script>
+$(document).ready(function(){
+$('.timepicker').timepicker();
+});
+</script>
