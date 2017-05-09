@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20170506192138) do
     t.integer  "radius"
     t.boolean  "card_avail"
     t.integer  "passcode"
-    t.date     "dob"
+    t.string   "dob"
     t.boolean  "verify"
     t.boolean  "offender"
   end

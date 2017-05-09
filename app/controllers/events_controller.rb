@@ -74,7 +74,7 @@ class EventsController < ApplicationController
 
     puts @event.routing
     if @event.routing.present? && @event.account.present?
-      @date = current_user.dob
+      @date = Date.strptime(current_user.dob, "%m/%d/%Y")
       puts "enter"
       Stripe.api_key = "sk_test_e3a2WOvBkQpgRrufKzprhHhn"
 

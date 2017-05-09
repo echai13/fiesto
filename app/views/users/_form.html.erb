@@ -16,6 +16,8 @@
 
  -->
 
+ <%= render 'shared/error_messages', object: @user %>
+
  <body>
    <div class="signup-wrap">
  	<div class="signup-html">
@@ -42,7 +44,7 @@
  				</div>
         <div class="group">
  					<label for="user" class="label">Date Of Birth</label>
-          <%= f.date_select :dob, class: 'input'%>
+          <%= f.text_field :dob, class: 'input', :data => {:provide => "datepicker"}%>
  				</div>
         <div class="group">
  					<label for="user" class="label">Email Address</label>

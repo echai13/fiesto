@@ -98,7 +98,8 @@ class UsersController < ApplicationController
  def sex_check
    require 'net/http'
    require 'json'
-   @url = "http://services.familywatchdog.us/rest/json.asp?key=F413B188-9C3B-4A19-A286-6BDEF26A84E1&lite=1&type=searchbynamedob&fname=" + current_user.first_name + "&lname=" + current_user.last_name + "&dob=" + current_user.dob.strftime("%m") + "/" + current_user.dob.strftime("%d") + "/" + current_user.dob.strftime("%y")
+   new_dob = Date.strptime(current_user.dob, "%m/%d/%Y")
+   @url = "http://services.familywatchdog.us/rest/json.asp?key=F413B188-9C3B-4A19-A286-6BDEF26A84E1&lite=1&type=searchbynamedob&fname=" + current_user.first_name + "&lname=" + current_user.last_name + "&dob=" + new_dob.strftime("%m") + "/" + new_dob.strftime("%d") + "/" + new_dob.strftime("%Y")
 
    uri = URI(@url)
    response = Net::HTTP.get(uri)
