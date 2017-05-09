@@ -58,6 +58,10 @@
     </label>
   </div>
 
+  <% if current_user.account_id.nil? %>
+    <%= render 'bank_account', f: f %>
+  <% end %>
+
 
   <div class="actions" type="button">
     <%= f.submit %>
