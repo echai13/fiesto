@@ -332,13 +332,14 @@ img {
 
 #myCarousel {
     position: relative;
-    width: 50%;
+    width: 480px;
+    height: 480px;
     float: left;
 }
 
 .carousel-text {
     position: relative;
-    float: left;
+    float: right;
     font-size: 32px;
     width: 50%;
     word-wrap: break-word;
