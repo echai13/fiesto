@@ -75,7 +75,9 @@
                 <thead>
                     <tr>
                         <th>Guest Name</th>
+                        <% if logged_in? && current_user.id == @event.user_id %>
                         <th>Password</th>
+                        <% end %>
                         <th colspan="10"></th>
                     </tr>
                 </thead>

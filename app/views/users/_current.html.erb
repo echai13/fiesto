@@ -13,18 +13,25 @@
 
         <!--if event has passed, option to rate/comment -->
         <% @event = Event.find_by_party(party.event_id) %>
-        <% if @event.time < Time.now && Date.strptime(@event.date, "%m/%d/%Y") < DateTime.now %>
-          <%= form_tag parties_path(:user_id => party.user_id, :event_id => party.event_id) do %>
+        <% if @event.time < Time.now && Date.strptime(@event.date, "%m/%d/%Y") < DateTime.now && party.attended%>
 
-          <div class="field">
-            <%= number_field_tag(:rating) %>
-          </div>
 
-          <div class="field">
-            <%= text_field_tag(:comment) %>
-          </div>
-          <%= submit_tag("Submit") %>
-        <% end %>
+            <%= form_tag parties_path(:user_id => party.user_id, :event_id => party.event_id) do %>
+            <% if party.rating.nil? && party.comment.nil? %>
+            <div class="field">
+              <%= label_tag 'Rating' %>
+              <%= number_field_tag(:rating) %>
+            </div>
+
+            <div class="field">
+              <%= label_tag 'Comment' %>
+              <%= text_field_tag(:comment) %>
+            </div>
+            <%= submit_tag("Submit") %>
+            <% else %>
+            <p> Rated: <%= party.rating %> - <%= party.comment %></p>
+            <% end %>
+          <% end %>
         <% end %>
         </div>
       <% end %>

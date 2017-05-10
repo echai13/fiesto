@@ -38,8 +38,8 @@ def create
       @current_party = Party.find_by_id(params[:party_id])
       @current_party.attended = TRUE
       @current_party.save
-      flash[:success] = "You have successfully joined the Guest List!"
-      redirect_to current_user
+      flash[:success] = "You have successfully check-in the guest!"
+      redirect_to Event.find_by_id(@current_party.event_id)
 
 
   elsif !current_user.card_avail #just add card to Stripe without charging
