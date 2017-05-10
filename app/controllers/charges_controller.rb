@@ -33,13 +33,19 @@ def create
 
         }
         )
-      end
+
       puts "current party"
       @current_party = Party.find_by_id(params[:party_id])
       @current_party.attended = TRUE
       @current_party.save
       flash[:success] = "You have successfully check-in the guest!"
       redirect_to Event.find_by_id(@current_party.event_id)
+    else
+      flash[:error] = "Guest's passcode is incorrect!"
+      @current_party = Party.find_by_id(params[:party_id])
+      redirect_to Event.find_by_id(@current_party.event_id)
+    end
+
 
 
   elsif !current_user.card_avail #just add card to Stripe without charging

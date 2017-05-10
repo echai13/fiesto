@@ -16,8 +16,12 @@
             <div class="col-lg-12 text-center">
             <h2>
                 <%= link_to '&larr;'.html_safe, "/", class: "event_text"%>
-                <% if logged_in? && !Party.party_exist(current_user.id, @event.id)%>
+                <% if logged_in? && !Party.party_exist(current_user.id, @event.id) && current_user.id != @event.user_id %>
+                  <% if current_user.card_avail %>
+                  <%= link_to 'RSVP', charges_path(:id => @event.id), method: :post, class: "event_text" %>
+                  <% else %>
                   <%= link_to 'RSVP', charges_path(:event_id => @event.id, :event_price => @event.price.to_f, :event_host => @event.user_id, :id => @event.id), class: "event_text" %>
+                  <% end %>
                 <% end %>
                 <% if logged_in? && @event.user_id == current_user.id%>
                   <%= link_to 'Edit', edit_event_path(@event), class: "event_text"%>
