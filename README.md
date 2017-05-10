@@ -6,7 +6,7 @@
 ## Michael Brown, 01/30/1985, 1912 Mechanicsville Rd., Florence, SC 29501
 
 
-Team name:​ Fiesto
+##### Team name:​ Fiesto
 
 Meeting times:​ Sunday from 9-11pm
 
