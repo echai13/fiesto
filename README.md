@@ -1,4 +1,7 @@
-﻿Team name:​ Fiesto
+## NOTE: Because Google has deprecated it's getCurrentLocation API(), this does not work on Chrome and the geolocation will default to Brandeis. To test Geolocation, please visit on a different browser! 
+## NOTE2: To view the heat-zone feature, it is advised to set radius to 6 because the distance from Brandeis to BU is between 6-8 miles away! Of course, if you are in a different location, then you will have to add Parties at various locations and experiment with that.
+
+Team name:​ Fiesto
 
 Meeting times:​ Sunday from 9-11pm
 
