@@ -19,11 +19,11 @@
             <% Event.all.each do |event| %>
             <% if count2 == 0 %>
             <div class="item active">
-                <%= image_tag event.avatar.url(:preview)%>
+                <%= link_to "#{image_tag event.avatar.url(:preview)}".html_safe, event %>
             </div>
             <% else %>
             <div class="item">
-                <%= image_tag event.avatar.url(:preview)%>
+                <%= link_to "#{image_tag event.avatar.url(:preview)}".html_safe, event %>
             </div>
             <% end %>
             <% count2 = count2 + 1 %>
