@@ -94,7 +94,8 @@
                             <%= User.name_by_id(party.user_id).first.username %>
                             <% end %>
                         </td>
-                        <% if @event.user_id == current_user.id %>
+                        
+                        <% if logged_in? && @event.user_id == current_user.id %>
                         <td>
                             <% if Party.find_by_id(party.id).attended %>
                             Paid. Attending right now.
@@ -153,7 +154,7 @@
 
         <!-- Rating and comments for party -->
         <!---if event has already passed? -->
-        <% if @event.time < Time.now && Date.strptime(@event.date, "%m/%d/%Y") < DateTime.now %>
+        <% if @event.time < Time.now && Date.strptime(@event.date, "%m/%d/%Y") < DateTime.now && attended%>
         <% Party.all.each do |party| %>
         <% if party.event_id == @event.id && !party.rating.nil?%>
         <% $average = $average + party.rating %>
