@@ -34,9 +34,12 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   # test "should expand radius" do
   #   log_in_as(@user)
   #   get events_url
-  #   current = @user.radius
-  #   @user.expand
-  #   new_rad = @user.radius
+  #   @controller = User.new
+  #   puts @controller
+  #   current = @controller.send(:radius)
+  #   # @user.expand
+  #   @controller.send(:expand)
+  #   new_rad = @controller.send(:radius)
   #   assert_equal(current + 2,new_rad)
   # end
 

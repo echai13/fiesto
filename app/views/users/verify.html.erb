@@ -11,20 +11,9 @@
          <label for="user" class="label">Last Four Digits of SSN</label>
            <%= number_field_tag :ssn, nil, class: 'input' %>
        </div>
+
        <div class="group">
-         <label for="user" class="label">First Name</label>
-           <%= text_field_tag :address_street1, nil,class: 'input' %>
-       </div>
-       <div class="group">
-         <label for="user" class="label">Last Name</label>
-           <%= text_field_tag :address_street2, nil, :class=> 'input' %>
-       </div>
-       <div class="group">
-         <label for="user" class="label">Date Of Birth</label>
-         <%= text_field_tag :address_city, nil,class: 'input' %>
-       </div>
-       <div class="group">
-         <label for="user" class="label">Email Address</label>
+         <label for="user" class="label">State of Residence</label>
            <%= select_tag :address_state, options_for_select(us_states), class: 'input'%>
        </div>
        <div class="group">

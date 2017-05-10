@@ -145,6 +145,8 @@ def verify_check
     current_user.verify = TRUE
     current_user.save
   end
+  flash[:success] = "Your identity will be reviewed."
+  redirect_to current_user
 end
 
  private

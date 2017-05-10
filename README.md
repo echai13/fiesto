@@ -1,6 +1,7 @@
-## NOTE: Because Google has deprecated it's getCurrentLocation API(), this does not work on Chrome and the geolocation will default to Brandeis. To test Geolocation, please visit on a different browser! 
+## NOTE: Because Google has deprecated it's getCurrentLocation API(), this does not work on Chrome and the geolocation will default to Brandeis. To test Geolocation, please visit on a different browser!
 ## NOTE2: To view the heat-zone feature, it is advised to set radius to 6 because the distance from Brandeis to BU is between 6-8 miles away! Of course, if you are in a different location, then you will have to add Parties at various locations and experiment with that.
 ## NOTE3: To test Stripe, the account created must have a routing/account info! It will not work if the host does not supply it, because where would the transfered money go, right? The currently generated events do not have the info, and it is not advised to RSVP to them. However, you can check the Stripe fake account/credit cards and use them to test!
+##NOTE4: To test identity validation and sexual offender check, we provide you with a few sexual offenders from Family Watchdog DB. Their names and date of birth is crucial when you click 'Verify Identity' in the Account tab. Once you submit the SSN and address, please return to the user profile. On the page, you will see "enter verify check". Refresh the page and an offender icon will appear on the profile. 
 
 
 Team name:​ Fiesto
