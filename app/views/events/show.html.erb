@@ -125,6 +125,10 @@
             <hr>
             <h2 class="intro-text text-center">
                 <strong>Party Chatroom</strong>
+                <p />
+                <% if current_user.id == @event.user_id %>
+                  <small>May need to refresh after event creation</small>
+                <% end %>
             </h2>
             <hr>
             <div id="messages" class = "nothing"></div>

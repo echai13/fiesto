@@ -16,7 +16,7 @@ class EventsController < ApplicationController
     @heat = FALSE
     if current_user != nil
       if current_user.radius == nil
-        current_user.radius = 5
+        current_user.radius = 6
       end
       #search based on search radius
       @my_events = Event.user_deletion(current_user.id)
