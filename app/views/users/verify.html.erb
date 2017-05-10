@@ -22,6 +22,11 @@
             <%= text_field_tag :address_street2, nil, :class=> 'input' %>
         </div>
 
+        <div class="group">
+          <label for="user" class="label">City</label>
+            <%= text_field_tag :address_city, nil, :class=> 'input' %>
+        </div>
+
        <div class="group">
          <label for="user" class="label">State of Residence</label>
            <%= select_tag :address_state, options_for_select(us_states), class: 'input'%>
