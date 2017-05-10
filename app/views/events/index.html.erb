@@ -2,32 +2,32 @@
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-            <li data-target="#myCarousel" data-slide-to="4"></li>
-            <li data-target="#myCarousel" data-slide-to="5"></li>
-            <li data-target="#myCarousel" data-slide-to="6"></li>
+            <% count = 0 %>
+            <% Event.all.each do |event| %>
+            <% if count == 0 %>
+            <li data-target="#myCarousel" data-slide-to="<%= count %>" class="active"></li>
+        <% else %>
+            <li data-target="#myCarousel" data-slide-to="<%= count %>"></li>
+            <% end %>
+            <% count = count + 1 %>
+            <% end %>
         </ol>
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
+            <% count2 = 0 %>
+            <% Event.all.each do |event| %>
+            <% if count2 == 0 %>
             <div class="item active">
-                <%= image_tag("party.jpg", size: "700x700") %>
+                <%= image_tag event.avatar.url(:preview)%>
             </div>
-
+            <% else %>
             <div class="item">
-                <%= image_tag("party.jpg", size: "700x700") %>
+                <%= image_tag event.avatar.url(:preview)%>
             </div>
-
-            <div class="item">
-                <%= image_tag("party.jpg", size: "700x700") %>
-            </div>
-
-            <div class="item">
-                <%= image_tag("party.jpg", size: "700x700") %>
-            </div>
+            <% end %>
+            <% count2 = count2 + 1 %>
+            <% end %>
         </div>
 
         <!-- Left and right controls -->
@@ -44,23 +44,23 @@
     <div class="carousel-text">
         <div class="text-pos">
             <p>Check out the parties that are trending right now.</p>
-                <p class="font-orange">RSVP now.</p>
-                <br>
-                <p>Make your nights come alive!
+            <p class="font-orange">RSVP now.</p>
+            <br>
+            <p>Make your nights come alive!
             </div>
         </div>
     </div>
 
     <div class="col-md-12 all-events">
         <div class="tab">
-            <button class="tablinks" onclick="load(event, 'near_div')", id="defaultOpen">Nearby Parties</button>
+            <button class="tablinks" onclick="load(event, 'near_div')" , id="defaultOpen">Nearby Parties</button>
             <button class="tablinks" onclick="load(event, 'host_div')">My Parties</button>
             <button class="tablinks" onclick="load(event, 'all_div')">All Parties</button>
         </div>
 
-          <div id="near_div" class="tabcontent"><%= render 'near' %></div>
-          <div id="host_div" class="tabcontent"><%= render 'host' %></div>
-          <div id="all_div" class="tabcontent"><%= render 'all' %></div>
+        <div id="near_div" class="tabcontent"><%= render 'near' %></div>
+        <div id="host_div" class="tabcontent"><%= render 'host' %></div>
+        <div id="all_div" class="tabcontent"><%= render 'all' %></div>
 
     </div>
 
@@ -73,10 +73,9 @@
     </div>
 
     <div id="floater2">
-      <% if @heat && logged_in?%>
+        <% if @heat && logged_in?%>
         <%= button_to 'Expand Radius', '/expand', :method => :post, :class => 'heat_button'%>
-      <% end %>
+        <% end %>
     </div>
 
-
-<%= javascript_include_tag "event_render" %>
+    <%= javascript_include_tag "event_render" %>
