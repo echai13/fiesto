@@ -154,7 +154,6 @@
         <!-- Rating and comments for party -->
         <!---if event has already passed? -->
         <% if @event.time < Time.now && Date.strptime(@event.date, "%m/%d/%Y") < DateTime.now %>
-        <h3>Reviews for party</h3>
         <% Party.all.each do |party| %>
         <% if party.event_id == @event.id && !party.rating.nil?%>
         <% $average = $average + party.rating %>

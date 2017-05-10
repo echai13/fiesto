@@ -25,33 +25,34 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
     get new_event_url
     assert_difference('Event.count') do
       post events_url, params: { event: { date: @event.date, location: @event.location, name: @event.name, time: @event.time} }
-      #geocoder test
-      # puts Event.first.latitude
-      # assert_not_nil (@event.latitude)
-      # assert_not_nil (@event.longitude)
-
     end
 
     assert_redirected_to event_url(Event.last)
   end
 
+
   # test "should expand radius" do
   #   log_in_as(@user)
   #   get events_url
   #   current = @user.radius
-  #   post expand_url
+  #   @user.expand
   #   new_rad = @user.radius
   #   assert_equal(current + 2,new_rad)
   # end
 
   # test "should show all parties" do
   #   #log_in_as(@user)
-  #   get events_url
-  #   assert_equal(@events.count, Event.all.count)
+  #   get '/'
+  #   if @event != nil
+  #     assert_equal(@event, Event.all)
+  #   else
+  #     assert_equal(0,Event.all.count)
+  #   end
   # end
 
   # test "should show event" do
-  #   get event_url(@event)
+  #   log_in_as(@user)
+  #   get event_url(@brandeis)
   #   assert_response :success
   # end
 
