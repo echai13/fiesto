@@ -121,7 +121,6 @@ end
 def verify_check
   BlockScore.api_key = 'sk_test_c09ab82974083e676772876a24482e00'
 
-  puts "city #{params[:address_city]}"
   new_dob = Date.strptime(current_user.dob, "%m/%d/%Y")
   person = BlockScore::Person.create(
     birth_day: new_dob.strftime("%d"),
@@ -141,7 +140,6 @@ def verify_check
 
   puts person.status
   if person.status == 'valid'
-    puts 'enter'
     current_user.verify = TRUE
     current_user.save
   end
