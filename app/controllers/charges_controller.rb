@@ -1,6 +1,6 @@
 class ChargesController < ApplicationController
   before_action :amount_to_be_charged, only: [:new, :create]
-  before_action :find_host_account_id, only: [:create]
+  before_action :find_host_account_id, only: [:new]
   before_action :join_party, only: [:new]
   $amount
   $account_id
@@ -18,7 +18,7 @@ def create
   #charge person who is attending event
   if params[:enter].present?
 
-    user_to_be_charged = User.find_by_id(params[:user_id])
+    user_to_be_charged = User.find_by(params[:user_id])
     puts params[:enter]
     if params[:enter].to_i == user_to_be_charged.passcode.to_i
 
@@ -71,7 +71,7 @@ def create
     end
 
     def find_host_account_id
-      $account_id = User.find_by_id(params[:event_host])
+      $account_id = User.find_by_id(id: params[:event_host])
       $account_id = $account_id.account_id
     end
 
