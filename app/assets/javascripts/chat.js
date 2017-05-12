@@ -2,7 +2,7 @@ function printMessage(message) {
   $('#messages').append(message + "<br>");
 }
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
     var chatChannel;
     var username;
 

@@ -71,7 +71,7 @@ def create
     end
 
     def find_host_account_id
-      $account_id = User.find_by(params[:event_host])
+      $account_id = User.find_by_id(params[:event_host])
       $account_id = $account_id.account_id
     end
 
