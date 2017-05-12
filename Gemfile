@@ -28,7 +28,8 @@ gem 'stripe'
 gem 'blockscore', '~> 4.2.1'
 gem 'twilio-ruby' # for interacting with twilio
 gem 'envyable' # for managing environment variables
-
+gem 'mail_form'
+gem 'simple_form'
 
 group :development, :test do
   gem 'sqlite3', '1.3.12'
