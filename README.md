@@ -4,7 +4,7 @@
 ## NOTE4: To test identity validation and sexual offender check, we provide you with a few sexual offenders from Family Watchdog DB. Their names and date of birth is crucial when you click 'Verify Identity' in the Account tab. Once you submit the SSN and address, please return to the user profile. On the page, you will see "enter verify check". Refresh the page and an offender icon will appear on the profile.
 ## Paul Decker, 02/22/1967, 2200 Block St., Fort Smith, AR 72923
 ## Michael Brown, 01/30/1985, 1912 Mechanicsville Rd., Florence, SC 29501
-## NOTE5: We noticed an unusual bug in our chat after deployment to Heroku. The susequest users in the channels keep typing blank messages. This error is not on localhost :|
+## NOTE5: The twilio chat does not work if you try incognido and another account. You need to use two computers.
 
 ##### Team name:​ Fiesto
 
